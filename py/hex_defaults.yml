@@ -1,0 +1,122 @@
+grid_maker_general:
+  # Override with path to mkhexgrid.exe for faster performance.
+  tool: mkhexgrid
+  # Print results of mkhexgrid to the terminal.
+  show_output: True
+
+# Settings fed to mkhexgrid.exe.
+# See https://www.nomic.net/~uckelman/mkhexgrid/mkhexgrid.html
+
+# Note: settings controlling the hex size and number of hexes made are
+# not set here. Related settings in the "hexpage" and "icopage" sections
+# below control those aspects of the grid.
+fixed:
+  grid_grain: v
+  # On Windows, PNGs need paths to the font file. The font name, like
+  # "Arial", suffices for SVG and PostScript formats.
+  coord_font: 'C:\Windows\Fonts\arial.ttf'
+  output: png
+
+# Settings merged with the fixed settings to be used in several grids
+# that divide the main hex or triangle by the number that names the
+# block.
+
+# Note: settings controlling the hex size and number of hexes made are
+# not set here. Related settings in the "hexpage" and "icopage" sections
+# below control those aspects of the grid.
+
+# The coord_format setting differs from the value expected by
+# mkhexgrid.exe. Instead of "r" or "R" used for rows and "c" or "C" for
+# columns, "x", "X", "y", or "Y" are used in the same way. This is done
+# to make them relative to the page rather than to the grid_grain as the
+# tool does. With the tool's way, horizontal grid grains require that
+# "r" and "c" be reversed to get a coordinate pair in the expected order.
+variable:
+  4:
+    coord_distance: 95
+    coord_format: '%02x%02y'
+    coord_size: 16
+  10:
+    coord_distance: 32
+    coord_format: '%02x%02y'
+    coord_size: 12
+  40:
+    coord_distance: 6
+    coord_format: '%02x%02y'
+    coord_size: 5.333
+
+# Settings passed to subprocess.run() when running mkhexgrid.exe.
+subprocess_kwargs:
+  capture_output: True
+  encoding: utf-8
+
+# Settings beyond mkhexgrid.exe's own for producing hexpages. These are
+# one big hex divided by additional grids into smaller hexes.
+hexpage:
+  border_hex: {}
+  # Hexes into which the main hex should be divided as measured from
+  # side to side. This corresponds to rows with both grid_grain values,
+  # though an extra one is made so that half-hexes along both edges will
+  # have coordinates.
+
+  # Only one of this or divisions_long should be given; the other will
+  # be calculated.
+  divisions_across: [4, 10, 40]
+
+  # Hexes into which the main hex should be divided as measured from
+  # point to point. This corresponds to columns with both grid_grain
+  # values, though an extra one may be made so that any partial
+  # hexes at the ends will have coordinates.
+
+  # This doesn't work as well as using divisions_across.
+  # divisions_long: [5, 13, 53]
+
+  # Directory to which hexpage grids are written.
+  page_dir: 'hexpage_grids'
+
+  # Length measuring across the main hex from side to side. This
+  # corresponds to hex_height for horizontal grid_grain and to hex_width
+  # for vertical grid_grain.
+
+  # This is measured in pixels for PNG and SVG output. PostScript output
+  # should have one of the following units appended: "in", "mm", "pt".
+  # Example: "8in"
+
+  # Only one of this or length_long should be given; the other will be
+  # calculated.
+  # length_across: 768
+
+  # Length measuring across the main hex from point to point. This
+  # corresponds to hex_width for horizontal grid_grain and to hex_height
+  # for vertical grid_grain. Units are as length_across.
+  length_long: 768
+
+  # I don't remember if this does anything yet. I suspect not.
+  coord_plan: Cartesian
+
+  # Flag to override the parsing of the coord_format setting that
+  # replaces "x" and "y" with "r" and "c" before passing it to
+  # mkhexgrid.exe. Set this to True if not using "x" and "y" or if such
+  # replacement gives undesired results.
+  coord_format_as_mkhexgrid: False
+
+  # Flag to override the reversal of coordinates for horizontal
+  # grid_grains. Set this to True to restore mkhexgrid.exe's default
+  # behavior.
+  coords_fixed_to_grain: False
+
+
+# Settings beyond mkhexgrid.exe's own for producing icopages. These are
+# a rectangle centering a face of an icosahedron (an equilateral
+# triangle) which is then divided by additional grids into smaller hexes.
+
+# See "hexpage" section above for usage.
+icopage:
+  border:
+    thickness: 1
+  page_dir: 'icopage_grids'
+  divisions_across: [4, 10, 40]
+  length_across: 768
+  coord_plan: Cartesian
+  coord_format_as_mkhexgrid: False
+  coords_fixed_to_grain: False

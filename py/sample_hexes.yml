@@ -1,0 +1,96 @@
+grid_maker_general:
+  tool: 'C:\Users\Ed\AppData\Local\Programs\mkhexgrid.exe'
+
+fixed:
+  background_opacity: 0
+  coord_bearing: 270
+  coord_color: '000000'
+  coord_font: Atkinson Hyperlegible
+  coord_format: ""
+  grid_color: '000000'
+  grid_grain: h
+  grid_thickness: 0.5
+  output: svg
+
+variable:
+  2:
+    coord_distance: 206
+    coord_format: '%03x%03y'
+    coord_size: 16
+  4:
+    coord_distance: 95
+    coord_format: '%03x%03y'
+    coord_size: 16
+  10:
+    coord_distance: 32
+    coord_format: '%03x%03y'
+    coord_size: 12
+  16:
+    coord_distance: 17
+    coord_format: '%03x%03y'
+    coord_size: 10.667
+  20:
+    coord_distance: 14
+    coord_format: '%03x%03y'
+    coord_size: 8
+  22:
+    coord_distance: 12
+    coord_format: '%03x%03y'
+    coord_size: 8
+  40:
+    coord_distance: 6
+    coord_format: '%03x%03y'
+    coord_size: 5.333
+  44:
+    coord_distance: 5
+    coord_format: '%03x%03y'
+    coord_size: 5.333
+
+hexpage:
+  border_hex:
+    center_color: '000000'
+    center_size: 2
+    center_style: c
+    grid_thickness: 1
+  divisions_across: [4, 6, 10, 16, 22, 40, 60, 64, 88, 100, 160]
+  page_dir: 'grids/hexpage'
+  # image_across: 816
+  # image_long: 1056
+  length_across: 768
+  length_long: Null
+  coord_plan: Cartesian
+  coord_format_as_mkhexgrid: False
+  coords_fixed_to_grain: False
+  # This has not been implemented yet.
+  pages:
+  - name: 120-mile
+    divs: [4, 40]
+  - name: 3-mile
+    divs: [22, 88]
+  - name: 240-mile
+    divs: [4, 40]
+  - name: 6-mile
+    divs: [22, 88]
+  - name: 44-league
+    divs: [22]
+  - name: 2-league
+    divs: [16, 160]
+
+icopage:
+  border:
+    thickness: 1
+  page_dir: 'grids/icopage'
+  divisions_across: [2, 4, 10, 20, 40, 44]
+  highlights:
+    grid_thickness: 2
+    grid_grain: v
+    coord_format: 'y'
+  length_across: 768
+  coord_plan: Cartesian
+  coord_format_as_mkhexgrid: False
+  coords_fixed_to_grain: False
+  pages:
+  - name: 120-mile
+    divs: [4, 40]
+  - name: 240-mile
+    divs: [2, 20]
