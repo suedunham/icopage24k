@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="767.5" height="886.155" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="bottoms" d="M 0 0" />
+<path id="tops" d="M 0 0 l 442.828 0" />
+<path id="outline" d="M 0 0 l 221.414 -383.5 442.828 0 221.414 383.5 -221.414 383.5 -442.828 0 z" />
+</defs>
+<g transform="translate(767.5,0.25) rotate(90)">
+<g id="grid" style="fill: none; stroke: #000000; stroke-opacity: 1; stroke-width: 0.5; ">
+<use x="0" y="383.5" xlink:href="#outline" />
+<use x="664.241" y="767" xlink:href="#bottoms" />
+</g>
+</g>
+</svg>

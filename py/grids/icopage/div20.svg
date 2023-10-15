@@ -1,0 +1,501 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="826.1" height="709.948" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="bottoms" d="M 0 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0 l 11.0851 19.2 m 22.1703 0 l 11.0851 -19.2 m 22.1703 0" />
+<path id="tops" d="M 0 0 l 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0" />
+<path id="outline" d="M 0 0 l 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 -19.2 22.1703 0 11.0851 19.2 22.1703 0 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 11.0851 19.2 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 -22.1703 0 -11.0851 19.2 -22.1703 0 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 11.0851 -19.2 -11.0851 -19.2 z" />
+</defs>
+<g transform="translate(826.1,0.25) rotate(90)">
+<g id="grid" style="fill: none; stroke: #000000; stroke-opacity: 1; stroke-width: 0.5; ">
+<use x="11.0851" y="19.2" xlink:href="#outline" />
+<use x="33.2554" y="19.2" xlink:href="#bottoms" />
+<use x="11.0851" y="57.6" xlink:href="#tops" />
+<use x="33.2554" y="57.6" xlink:href="#bottoms" />
+<use x="11.0851" y="96" xlink:href="#tops" />
+<use x="33.2554" y="96" xlink:href="#bottoms" />
+<use x="11.0851" y="134.4" xlink:href="#tops" />
+<use x="33.2554" y="134.4" xlink:href="#bottoms" />
+<use x="11.0851" y="172.8" xlink:href="#tops" />
+<use x="33.2554" y="172.8" xlink:href="#bottoms" />
+<use x="11.0851" y="211.2" xlink:href="#tops" />
+<use x="33.2554" y="211.2" xlink:href="#bottoms" />
+<use x="11.0851" y="249.6" xlink:href="#tops" />
+<use x="33.2554" y="249.6" xlink:href="#bottoms" />
+<use x="11.0851" y="288" xlink:href="#tops" />
+<use x="33.2554" y="288" xlink:href="#bottoms" />
+<use x="11.0851" y="326.4" xlink:href="#tops" />
+<use x="33.2554" y="326.4" xlink:href="#bottoms" />
+<use x="11.0851" y="364.8" xlink:href="#tops" />
+<use x="33.2554" y="364.8" xlink:href="#bottoms" />
+<use x="11.0851" y="403.2" xlink:href="#tops" />
+<use x="33.2554" y="403.2" xlink:href="#bottoms" />
+<use x="11.0851" y="441.6" xlink:href="#tops" />
+<use x="33.2554" y="441.6" xlink:href="#bottoms" />
+<use x="11.0851" y="480" xlink:href="#tops" />
+<use x="33.2554" y="480" xlink:href="#bottoms" />
+<use x="11.0851" y="518.4" xlink:href="#tops" />
+<use x="33.2554" y="518.4" xlink:href="#bottoms" />
+<use x="11.0851" y="556.8" xlink:href="#tops" />
+<use x="33.2554" y="556.8" xlink:href="#bottoms" />
+<use x="11.0851" y="595.2" xlink:href="#tops" />
+<use x="33.2554" y="595.2" xlink:href="#bottoms" />
+<use x="11.0851" y="633.6" xlink:href="#tops" />
+<use x="33.2554" y="633.6" xlink:href="#bottoms" />
+<use x="11.0851" y="672" xlink:href="#tops" />
+<use x="33.2554" y="672" xlink:href="#bottoms" />
+<use x="11.0851" y="710.4" xlink:href="#tops" />
+<use x="33.2554" y="710.4" xlink:href="#bottoms" />
+<use x="11.0851" y="748.8" xlink:href="#tops" />
+<use x="33.2554" y="748.8" xlink:href="#bottoms" />
+<use x="11.0851" y="787.2" xlink:href="#tops" />
+<use x="33.2554" y="787.2" xlink:href="#bottoms" />
+</g>
+<g id="coordinates" style="fill: #000000; fill-opacity: 1; font-family: Atkinson Hyperlegible; font-size: 8px; text-anchor: middle; ">
+<text x="36.1703" y="38.4" transform="rotate(-90 36.1703 38.4)">21,21</text>
+<text x="69.4256" y="19.2" transform="rotate(-90 69.4256 19.2)">21,20</text>
+<text x="102.681" y="38.4" transform="rotate(-90 102.681 38.4)">21,19</text>
+<text x="135.936" y="19.2" transform="rotate(-90 135.936 19.2)">21,18</text>
+<text x="169.192" y="38.4" transform="rotate(-90 169.192 38.4)">21,17</text>
+<text x="202.447" y="19.2" transform="rotate(-90 202.447 19.2)">21,16</text>
+<text x="235.703" y="38.4" transform="rotate(-90 235.703 38.4)">21,15</text>
+<text x="268.958" y="19.2" transform="rotate(-90 268.958 19.2)">21,14</text>
+<text x="302.213" y="38.4" transform="rotate(-90 302.213 38.4)">21,13</text>
+<text x="335.469" y="19.2" transform="rotate(-90 335.469 19.2)">21,12</text>
+<text x="368.724" y="38.4" transform="rotate(-90 368.724 38.4)">21,11</text>
+<text x="401.979" y="19.2" transform="rotate(-90 401.979 19.2)">21,10</text>
+<text x="435.235" y="38.4" transform="rotate(-90 435.235 38.4)">21,9</text>
+<text x="468.49" y="19.2" transform="rotate(-90 468.49 19.2)">21,8</text>
+<text x="501.746" y="38.4" transform="rotate(-90 501.746 38.4)">21,7</text>
+<text x="535.001" y="19.2" transform="rotate(-90 535.001 19.2)">21,6</text>
+<text x="568.256" y="38.4" transform="rotate(-90 568.256 38.4)">21,5</text>
+<text x="601.512" y="19.2" transform="rotate(-90 601.512 19.2)">21,4</text>
+<text x="634.767" y="38.4" transform="rotate(-90 634.767 38.4)">21,3</text>
+<text x="668.022" y="19.2" transform="rotate(-90 668.022 19.2)">21,2</text>
+<text x="701.278" y="38.4" transform="rotate(-90 701.278 38.4)">21,1</text>
+<text x="36.1703" y="76.8" transform="rotate(-90 36.1703 76.8)">20,21</text>
+<text x="69.4256" y="57.6" transform="rotate(-90 69.4256 57.6)">20,20</text>
+<text x="102.681" y="76.8" transform="rotate(-90 102.681 76.8)">20,19</text>
+<text x="135.936" y="57.6" transform="rotate(-90 135.936 57.6)">20,18</text>
+<text x="169.192" y="76.8" transform="rotate(-90 169.192 76.8)">20,17</text>
+<text x="202.447" y="57.6" transform="rotate(-90 202.447 57.6)">20,16</text>
+<text x="235.703" y="76.8" transform="rotate(-90 235.703 76.8)">20,15</text>
+<text x="268.958" y="57.6" transform="rotate(-90 268.958 57.6)">20,14</text>
+<text x="302.213" y="76.8" transform="rotate(-90 302.213 76.8)">20,13</text>
+<text x="335.469" y="57.6" transform="rotate(-90 335.469 57.6)">20,12</text>
+<text x="368.724" y="76.8" transform="rotate(-90 368.724 76.8)">20,11</text>
+<text x="401.979" y="57.6" transform="rotate(-90 401.979 57.6)">20,10</text>
+<text x="435.235" y="76.8" transform="rotate(-90 435.235 76.8)">20,9</text>
+<text x="468.49" y="57.6" transform="rotate(-90 468.49 57.6)">20,8</text>
+<text x="501.746" y="76.8" transform="rotate(-90 501.746 76.8)">20,7</text>
+<text x="535.001" y="57.6" transform="rotate(-90 535.001 57.6)">20,6</text>
+<text x="568.256" y="76.8" transform="rotate(-90 568.256 76.8)">20,5</text>
+<text x="601.512" y="57.6" transform="rotate(-90 601.512 57.6)">20,4</text>
+<text x="634.767" y="76.8" transform="rotate(-90 634.767 76.8)">20,3</text>
+<text x="668.022" y="57.6" transform="rotate(-90 668.022 57.6)">20,2</text>
+<text x="701.278" y="76.8" transform="rotate(-90 701.278 76.8)">20,1</text>
+<text x="36.1703" y="115.2" transform="rotate(-90 36.1703 115.2)">19,21</text>
+<text x="69.4256" y="96" transform="rotate(-90 69.4256 96)">19,20</text>
+<text x="102.681" y="115.2" transform="rotate(-90 102.681 115.2)">19,19</text>
+<text x="135.936" y="96" transform="rotate(-90 135.936 96)">19,18</text>
+<text x="169.192" y="115.2" transform="rotate(-90 169.192 115.2)">19,17</text>
+<text x="202.447" y="96" transform="rotate(-90 202.447 96)">19,16</text>
+<text x="235.703" y="115.2" transform="rotate(-90 235.703 115.2)">19,15</text>
+<text x="268.958" y="96" transform="rotate(-90 268.958 96)">19,14</text>
+<text x="302.213" y="115.2" transform="rotate(-90 302.213 115.2)">19,13</text>
+<text x="335.469" y="96" transform="rotate(-90 335.469 96)">19,12</text>
+<text x="368.724" y="115.2" transform="rotate(-90 368.724 115.2)">19,11</text>
+<text x="401.979" y="96" transform="rotate(-90 401.979 96)">19,10</text>
+<text x="435.235" y="115.2" transform="rotate(-90 435.235 115.2)">19,9</text>
+<text x="468.49" y="96" transform="rotate(-90 468.49 96)">19,8</text>
+<text x="501.746" y="115.2" transform="rotate(-90 501.746 115.2)">19,7</text>
+<text x="535.001" y="96" transform="rotate(-90 535.001 96)">19,6</text>
+<text x="568.256" y="115.2" transform="rotate(-90 568.256 115.2)">19,5</text>
+<text x="601.512" y="96" transform="rotate(-90 601.512 96)">19,4</text>
+<text x="634.767" y="115.2" transform="rotate(-90 634.767 115.2)">19,3</text>
+<text x="668.022" y="96" transform="rotate(-90 668.022 96)">19,2</text>
+<text x="701.278" y="115.2" transform="rotate(-90 701.278 115.2)">19,1</text>
+<text x="36.1703" y="153.6" transform="rotate(-90 36.1703 153.6)">18,21</text>
+<text x="69.4256" y="134.4" transform="rotate(-90 69.4256 134.4)">18,20</text>
+<text x="102.681" y="153.6" transform="rotate(-90 102.681 153.6)">18,19</text>
+<text x="135.936" y="134.4" transform="rotate(-90 135.936 134.4)">18,18</text>
+<text x="169.192" y="153.6" transform="rotate(-90 169.192 153.6)">18,17</text>
+<text x="202.447" y="134.4" transform="rotate(-90 202.447 134.4)">18,16</text>
+<text x="235.703" y="153.6" transform="rotate(-90 235.703 153.6)">18,15</text>
+<text x="268.958" y="134.4" transform="rotate(-90 268.958 134.4)">18,14</text>
+<text x="302.213" y="153.6" transform="rotate(-90 302.213 153.6)">18,13</text>
+<text x="335.469" y="134.4" transform="rotate(-90 335.469 134.4)">18,12</text>
+<text x="368.724" y="153.6" transform="rotate(-90 368.724 153.6)">18,11</text>
+<text x="401.979" y="134.4" transform="rotate(-90 401.979 134.4)">18,10</text>
+<text x="435.235" y="153.6" transform="rotate(-90 435.235 153.6)">18,9</text>
+<text x="468.49" y="134.4" transform="rotate(-90 468.49 134.4)">18,8</text>
+<text x="501.746" y="153.6" transform="rotate(-90 501.746 153.6)">18,7</text>
+<text x="535.001" y="134.4" transform="rotate(-90 535.001 134.4)">18,6</text>
+<text x="568.256" y="153.6" transform="rotate(-90 568.256 153.6)">18,5</text>
+<text x="601.512" y="134.4" transform="rotate(-90 601.512 134.4)">18,4</text>
+<text x="634.767" y="153.6" transform="rotate(-90 634.767 153.6)">18,3</text>
+<text x="668.022" y="134.4" transform="rotate(-90 668.022 134.4)">18,2</text>
+<text x="701.278" y="153.6" transform="rotate(-90 701.278 153.6)">18,1</text>
+<text x="36.1703" y="192" transform="rotate(-90 36.1703 192)">17,21</text>
+<text x="69.4256" y="172.8" transform="rotate(-90 69.4256 172.8)">17,20</text>
+<text x="102.681" y="192" transform="rotate(-90 102.681 192)">17,19</text>
+<text x="135.936" y="172.8" transform="rotate(-90 135.936 172.8)">17,18</text>
+<text x="169.192" y="192" transform="rotate(-90 169.192 192)">17,17</text>
+<text x="202.447" y="172.8" transform="rotate(-90 202.447 172.8)">17,16</text>
+<text x="235.703" y="192" transform="rotate(-90 235.703 192)">17,15</text>
+<text x="268.958" y="172.8" transform="rotate(-90 268.958 172.8)">17,14</text>
+<text x="302.213" y="192" transform="rotate(-90 302.213 192)">17,13</text>
+<text x="335.469" y="172.8" transform="rotate(-90 335.469 172.8)">17,12</text>
+<text x="368.724" y="192" transform="rotate(-90 368.724 192)">17,11</text>
+<text x="401.979" y="172.8" transform="rotate(-90 401.979 172.8)">17,10</text>
+<text x="435.235" y="192" transform="rotate(-90 435.235 192)">17,9</text>
+<text x="468.49" y="172.8" transform="rotate(-90 468.49 172.8)">17,8</text>
+<text x="501.746" y="192" transform="rotate(-90 501.746 192)">17,7</text>
+<text x="535.001" y="172.8" transform="rotate(-90 535.001 172.8)">17,6</text>
+<text x="568.256" y="192" transform="rotate(-90 568.256 192)">17,5</text>
+<text x="601.512" y="172.8" transform="rotate(-90 601.512 172.8)">17,4</text>
+<text x="634.767" y="192" transform="rotate(-90 634.767 192)">17,3</text>
+<text x="668.022" y="172.8" transform="rotate(-90 668.022 172.8)">17,2</text>
+<text x="701.278" y="192" transform="rotate(-90 701.278 192)">17,1</text>
+<text x="36.1703" y="230.4" transform="rotate(-90 36.1703 230.4)">16,21</text>
+<text x="69.4256" y="211.2" transform="rotate(-90 69.4256 211.2)">16,20</text>
+<text x="102.681" y="230.4" transform="rotate(-90 102.681 230.4)">16,19</text>
+<text x="135.936" y="211.2" transform="rotate(-90 135.936 211.2)">16,18</text>
+<text x="169.192" y="230.4" transform="rotate(-90 169.192 230.4)">16,17</text>
+<text x="202.447" y="211.2" transform="rotate(-90 202.447 211.2)">16,16</text>
+<text x="235.703" y="230.4" transform="rotate(-90 235.703 230.4)">16,15</text>
+<text x="268.958" y="211.2" transform="rotate(-90 268.958 211.2)">16,14</text>
+<text x="302.213" y="230.4" transform="rotate(-90 302.213 230.4)">16,13</text>
+<text x="335.469" y="211.2" transform="rotate(-90 335.469 211.2)">16,12</text>
+<text x="368.724" y="230.4" transform="rotate(-90 368.724 230.4)">16,11</text>
+<text x="401.979" y="211.2" transform="rotate(-90 401.979 211.2)">16,10</text>
+<text x="435.235" y="230.4" transform="rotate(-90 435.235 230.4)">16,9</text>
+<text x="468.49" y="211.2" transform="rotate(-90 468.49 211.2)">16,8</text>
+<text x="501.746" y="230.4" transform="rotate(-90 501.746 230.4)">16,7</text>
+<text x="535.001" y="211.2" transform="rotate(-90 535.001 211.2)">16,6</text>
+<text x="568.256" y="230.4" transform="rotate(-90 568.256 230.4)">16,5</text>
+<text x="601.512" y="211.2" transform="rotate(-90 601.512 211.2)">16,4</text>
+<text x="634.767" y="230.4" transform="rotate(-90 634.767 230.4)">16,3</text>
+<text x="668.022" y="211.2" transform="rotate(-90 668.022 211.2)">16,2</text>
+<text x="701.278" y="230.4" transform="rotate(-90 701.278 230.4)">16,1</text>
+<text x="36.1703" y="268.8" transform="rotate(-90 36.1703 268.8)">15,21</text>
+<text x="69.4256" y="249.6" transform="rotate(-90 69.4256 249.6)">15,20</text>
+<text x="102.681" y="268.8" transform="rotate(-90 102.681 268.8)">15,19</text>
+<text x="135.936" y="249.6" transform="rotate(-90 135.936 249.6)">15,18</text>
+<text x="169.192" y="268.8" transform="rotate(-90 169.192 268.8)">15,17</text>
+<text x="202.447" y="249.6" transform="rotate(-90 202.447 249.6)">15,16</text>
+<text x="235.703" y="268.8" transform="rotate(-90 235.703 268.8)">15,15</text>
+<text x="268.958" y="249.6" transform="rotate(-90 268.958 249.6)">15,14</text>
+<text x="302.213" y="268.8" transform="rotate(-90 302.213 268.8)">15,13</text>
+<text x="335.469" y="249.6" transform="rotate(-90 335.469 249.6)">15,12</text>
+<text x="368.724" y="268.8" transform="rotate(-90 368.724 268.8)">15,11</text>
+<text x="401.979" y="249.6" transform="rotate(-90 401.979 249.6)">15,10</text>
+<text x="435.235" y="268.8" transform="rotate(-90 435.235 268.8)">15,9</text>
+<text x="468.49" y="249.6" transform="rotate(-90 468.49 249.6)">15,8</text>
+<text x="501.746" y="268.8" transform="rotate(-90 501.746 268.8)">15,7</text>
+<text x="535.001" y="249.6" transform="rotate(-90 535.001 249.6)">15,6</text>
+<text x="568.256" y="268.8" transform="rotate(-90 568.256 268.8)">15,5</text>
+<text x="601.512" y="249.6" transform="rotate(-90 601.512 249.6)">15,4</text>
+<text x="634.767" y="268.8" transform="rotate(-90 634.767 268.8)">15,3</text>
+<text x="668.022" y="249.6" transform="rotate(-90 668.022 249.6)">15,2</text>
+<text x="701.278" y="268.8" transform="rotate(-90 701.278 268.8)">15,1</text>
+<text x="36.1703" y="307.2" transform="rotate(-90 36.1703 307.2)">14,21</text>
+<text x="69.4256" y="288" transform="rotate(-90 69.4256 288)">14,20</text>
+<text x="102.681" y="307.2" transform="rotate(-90 102.681 307.2)">14,19</text>
+<text x="135.936" y="288" transform="rotate(-90 135.936 288)">14,18</text>
+<text x="169.192" y="307.2" transform="rotate(-90 169.192 307.2)">14,17</text>
+<text x="202.447" y="288" transform="rotate(-90 202.447 288)">14,16</text>
+<text x="235.703" y="307.2" transform="rotate(-90 235.703 307.2)">14,15</text>
+<text x="268.958" y="288" transform="rotate(-90 268.958 288)">14,14</text>
+<text x="302.213" y="307.2" transform="rotate(-90 302.213 307.2)">14,13</text>
+<text x="335.469" y="288" transform="rotate(-90 335.469 288)">14,12</text>
+<text x="368.724" y="307.2" transform="rotate(-90 368.724 307.2)">14,11</text>
+<text x="401.979" y="288" transform="rotate(-90 401.979 288)">14,10</text>
+<text x="435.235" y="307.2" transform="rotate(-90 435.235 307.2)">14,9</text>
+<text x="468.49" y="288" transform="rotate(-90 468.49 288)">14,8</text>
+<text x="501.746" y="307.2" transform="rotate(-90 501.746 307.2)">14,7</text>
+<text x="535.001" y="288" transform="rotate(-90 535.001 288)">14,6</text>
+<text x="568.256" y="307.2" transform="rotate(-90 568.256 307.2)">14,5</text>
+<text x="601.512" y="288" transform="rotate(-90 601.512 288)">14,4</text>
+<text x="634.767" y="307.2" transform="rotate(-90 634.767 307.2)">14,3</text>
+<text x="668.022" y="288" transform="rotate(-90 668.022 288)">14,2</text>
+<text x="701.278" y="307.2" transform="rotate(-90 701.278 307.2)">14,1</text>
+<text x="36.1703" y="345.6" transform="rotate(-90 36.1703 345.6)">13,21</text>
+<text x="69.4256" y="326.4" transform="rotate(-90 69.4256 326.4)">13,20</text>
+<text x="102.681" y="345.6" transform="rotate(-90 102.681 345.6)">13,19</text>
+<text x="135.936" y="326.4" transform="rotate(-90 135.936 326.4)">13,18</text>
+<text x="169.192" y="345.6" transform="rotate(-90 169.192 345.6)">13,17</text>
+<text x="202.447" y="326.4" transform="rotate(-90 202.447 326.4)">13,16</text>
+<text x="235.703" y="345.6" transform="rotate(-90 235.703 345.6)">13,15</text>
+<text x="268.958" y="326.4" transform="rotate(-90 268.958 326.4)">13,14</text>
+<text x="302.213" y="345.6" transform="rotate(-90 302.213 345.6)">13,13</text>
+<text x="335.469" y="326.4" transform="rotate(-90 335.469 326.4)">13,12</text>
+<text x="368.724" y="345.6" transform="rotate(-90 368.724 345.6)">13,11</text>
+<text x="401.979" y="326.4" transform="rotate(-90 401.979 326.4)">13,10</text>
+<text x="435.235" y="345.6" transform="rotate(-90 435.235 345.6)">13,9</text>
+<text x="468.49" y="326.4" transform="rotate(-90 468.49 326.4)">13,8</text>
+<text x="501.746" y="345.6" transform="rotate(-90 501.746 345.6)">13,7</text>
+<text x="535.001" y="326.4" transform="rotate(-90 535.001 326.4)">13,6</text>
+<text x="568.256" y="345.6" transform="rotate(-90 568.256 345.6)">13,5</text>
+<text x="601.512" y="326.4" transform="rotate(-90 601.512 326.4)">13,4</text>
+<text x="634.767" y="345.6" transform="rotate(-90 634.767 345.6)">13,3</text>
+<text x="668.022" y="326.4" transform="rotate(-90 668.022 326.4)">13,2</text>
+<text x="701.278" y="345.6" transform="rotate(-90 701.278 345.6)">13,1</text>
+<text x="36.1703" y="384" transform="rotate(-90 36.1703 384)">12,21</text>
+<text x="69.4256" y="364.8" transform="rotate(-90 69.4256 364.8)">12,20</text>
+<text x="102.681" y="384" transform="rotate(-90 102.681 384)">12,19</text>
+<text x="135.936" y="364.8" transform="rotate(-90 135.936 364.8)">12,18</text>
+<text x="169.192" y="384" transform="rotate(-90 169.192 384)">12,17</text>
+<text x="202.447" y="364.8" transform="rotate(-90 202.447 364.8)">12,16</text>
+<text x="235.703" y="384" transform="rotate(-90 235.703 384)">12,15</text>
+<text x="268.958" y="364.8" transform="rotate(-90 268.958 364.8)">12,14</text>
+<text x="302.213" y="384" transform="rotate(-90 302.213 384)">12,13</text>
+<text x="335.469" y="364.8" transform="rotate(-90 335.469 364.8)">12,12</text>
+<text x="368.724" y="384" transform="rotate(-90 368.724 384)">12,11</text>
+<text x="401.979" y="364.8" transform="rotate(-90 401.979 364.8)">12,10</text>
+<text x="435.235" y="384" transform="rotate(-90 435.235 384)">12,9</text>
+<text x="468.49" y="364.8" transform="rotate(-90 468.49 364.8)">12,8</text>
+<text x="501.746" y="384" transform="rotate(-90 501.746 384)">12,7</text>
+<text x="535.001" y="364.8" transform="rotate(-90 535.001 364.8)">12,6</text>
+<text x="568.256" y="384" transform="rotate(-90 568.256 384)">12,5</text>
+<text x="601.512" y="364.8" transform="rotate(-90 601.512 364.8)">12,4</text>
+<text x="634.767" y="384" transform="rotate(-90 634.767 384)">12,3</text>
+<text x="668.022" y="364.8" transform="rotate(-90 668.022 364.8)">12,2</text>
+<text x="701.278" y="384" transform="rotate(-90 701.278 384)">12,1</text>
+<text x="36.1703" y="422.4" transform="rotate(-90 36.1703 422.4)">11,21</text>
+<text x="69.4256" y="403.2" transform="rotate(-90 69.4256 403.2)">11,20</text>
+<text x="102.681" y="422.4" transform="rotate(-90 102.681 422.4)">11,19</text>
+<text x="135.936" y="403.2" transform="rotate(-90 135.936 403.2)">11,18</text>
+<text x="169.192" y="422.4" transform="rotate(-90 169.192 422.4)">11,17</text>
+<text x="202.447" y="403.2" transform="rotate(-90 202.447 403.2)">11,16</text>
+<text x="235.703" y="422.4" transform="rotate(-90 235.703 422.4)">11,15</text>
+<text x="268.958" y="403.2" transform="rotate(-90 268.958 403.2)">11,14</text>
+<text x="302.213" y="422.4" transform="rotate(-90 302.213 422.4)">11,13</text>
+<text x="335.469" y="403.2" transform="rotate(-90 335.469 403.2)">11,12</text>
+<text x="368.724" y="422.4" transform="rotate(-90 368.724 422.4)">11,11</text>
+<text x="401.979" y="403.2" transform="rotate(-90 401.979 403.2)">11,10</text>
+<text x="435.235" y="422.4" transform="rotate(-90 435.235 422.4)">11,9</text>
+<text x="468.49" y="403.2" transform="rotate(-90 468.49 403.2)">11,8</text>
+<text x="501.746" y="422.4" transform="rotate(-90 501.746 422.4)">11,7</text>
+<text x="535.001" y="403.2" transform="rotate(-90 535.001 403.2)">11,6</text>
+<text x="568.256" y="422.4" transform="rotate(-90 568.256 422.4)">11,5</text>
+<text x="601.512" y="403.2" transform="rotate(-90 601.512 403.2)">11,4</text>
+<text x="634.767" y="422.4" transform="rotate(-90 634.767 422.4)">11,3</text>
+<text x="668.022" y="403.2" transform="rotate(-90 668.022 403.2)">11,2</text>
+<text x="701.278" y="422.4" transform="rotate(-90 701.278 422.4)">11,1</text>
+<text x="36.1703" y="460.8" transform="rotate(-90 36.1703 460.8)">10,21</text>
+<text x="69.4256" y="441.6" transform="rotate(-90 69.4256 441.6)">10,20</text>
+<text x="102.681" y="460.8" transform="rotate(-90 102.681 460.8)">10,19</text>
+<text x="135.936" y="441.6" transform="rotate(-90 135.936 441.6)">10,18</text>
+<text x="169.192" y="460.8" transform="rotate(-90 169.192 460.8)">10,17</text>
+<text x="202.447" y="441.6" transform="rotate(-90 202.447 441.6)">10,16</text>
+<text x="235.703" y="460.8" transform="rotate(-90 235.703 460.8)">10,15</text>
+<text x="268.958" y="441.6" transform="rotate(-90 268.958 441.6)">10,14</text>
+<text x="302.213" y="460.8" transform="rotate(-90 302.213 460.8)">10,13</text>
+<text x="335.469" y="441.6" transform="rotate(-90 335.469 441.6)">10,12</text>
+<text x="368.724" y="460.8" transform="rotate(-90 368.724 460.8)">10,11</text>
+<text x="401.979" y="441.6" transform="rotate(-90 401.979 441.6)">10,10</text>
+<text x="435.235" y="460.8" transform="rotate(-90 435.235 460.8)">10,9</text>
+<text x="468.49" y="441.6" transform="rotate(-90 468.49 441.6)">10,8</text>
+<text x="501.746" y="460.8" transform="rotate(-90 501.746 460.8)">10,7</text>
+<text x="535.001" y="441.6" transform="rotate(-90 535.001 441.6)">10,6</text>
+<text x="568.256" y="460.8" transform="rotate(-90 568.256 460.8)">10,5</text>
+<text x="601.512" y="441.6" transform="rotate(-90 601.512 441.6)">10,4</text>
+<text x="634.767" y="460.8" transform="rotate(-90 634.767 460.8)">10,3</text>
+<text x="668.022" y="441.6" transform="rotate(-90 668.022 441.6)">10,2</text>
+<text x="701.278" y="460.8" transform="rotate(-90 701.278 460.8)">10,1</text>
+<text x="36.1703" y="499.2" transform="rotate(-90 36.1703 499.2)">9,21</text>
+<text x="69.4256" y="480" transform="rotate(-90 69.4256 480)">9,20</text>
+<text x="102.681" y="499.2" transform="rotate(-90 102.681 499.2)">9,19</text>
+<text x="135.936" y="480" transform="rotate(-90 135.936 480)">9,18</text>
+<text x="169.192" y="499.2" transform="rotate(-90 169.192 499.2)">9,17</text>
+<text x="202.447" y="480" transform="rotate(-90 202.447 480)">9,16</text>
+<text x="235.703" y="499.2" transform="rotate(-90 235.703 499.2)">9,15</text>
+<text x="268.958" y="480" transform="rotate(-90 268.958 480)">9,14</text>
+<text x="302.213" y="499.2" transform="rotate(-90 302.213 499.2)">9,13</text>
+<text x="335.469" y="480" transform="rotate(-90 335.469 480)">9,12</text>
+<text x="368.724" y="499.2" transform="rotate(-90 368.724 499.2)">9,11</text>
+<text x="401.979" y="480" transform="rotate(-90 401.979 480)">9,10</text>
+<text x="435.235" y="499.2" transform="rotate(-90 435.235 499.2)">9,9</text>
+<text x="468.49" y="480" transform="rotate(-90 468.49 480)">9,8</text>
+<text x="501.746" y="499.2" transform="rotate(-90 501.746 499.2)">9,7</text>
+<text x="535.001" y="480" transform="rotate(-90 535.001 480)">9,6</text>
+<text x="568.256" y="499.2" transform="rotate(-90 568.256 499.2)">9,5</text>
+<text x="601.512" y="480" transform="rotate(-90 601.512 480)">9,4</text>
+<text x="634.767" y="499.2" transform="rotate(-90 634.767 499.2)">9,3</text>
+<text x="668.022" y="480" transform="rotate(-90 668.022 480)">9,2</text>
+<text x="701.278" y="499.2" transform="rotate(-90 701.278 499.2)">9,1</text>
+<text x="36.1703" y="537.6" transform="rotate(-90 36.1703 537.6)">8,21</text>
+<text x="69.4256" y="518.4" transform="rotate(-90 69.4256 518.4)">8,20</text>
+<text x="102.681" y="537.6" transform="rotate(-90 102.681 537.6)">8,19</text>
+<text x="135.936" y="518.4" transform="rotate(-90 135.936 518.4)">8,18</text>
+<text x="169.192" y="537.6" transform="rotate(-90 169.192 537.6)">8,17</text>
+<text x="202.447" y="518.4" transform="rotate(-90 202.447 518.4)">8,16</text>
+<text x="235.703" y="537.6" transform="rotate(-90 235.703 537.6)">8,15</text>
+<text x="268.958" y="518.4" transform="rotate(-90 268.958 518.4)">8,14</text>
+<text x="302.213" y="537.6" transform="rotate(-90 302.213 537.6)">8,13</text>
+<text x="335.469" y="518.4" transform="rotate(-90 335.469 518.4)">8,12</text>
+<text x="368.724" y="537.6" transform="rotate(-90 368.724 537.6)">8,11</text>
+<text x="401.979" y="518.4" transform="rotate(-90 401.979 518.4)">8,10</text>
+<text x="435.235" y="537.6" transform="rotate(-90 435.235 537.6)">8,9</text>
+<text x="468.49" y="518.4" transform="rotate(-90 468.49 518.4)">8,8</text>
+<text x="501.746" y="537.6" transform="rotate(-90 501.746 537.6)">8,7</text>
+<text x="535.001" y="518.4" transform="rotate(-90 535.001 518.4)">8,6</text>
+<text x="568.256" y="537.6" transform="rotate(-90 568.256 537.6)">8,5</text>
+<text x="601.512" y="518.4" transform="rotate(-90 601.512 518.4)">8,4</text>
+<text x="634.767" y="537.6" transform="rotate(-90 634.767 537.6)">8,3</text>
+<text x="668.022" y="518.4" transform="rotate(-90 668.022 518.4)">8,2</text>
+<text x="701.278" y="537.6" transform="rotate(-90 701.278 537.6)">8,1</text>
+<text x="36.1703" y="576" transform="rotate(-90 36.1703 576)">7,21</text>
+<text x="69.4256" y="556.8" transform="rotate(-90 69.4256 556.8)">7,20</text>
+<text x="102.681" y="576" transform="rotate(-90 102.681 576)">7,19</text>
+<text x="135.936" y="556.8" transform="rotate(-90 135.936 556.8)">7,18</text>
+<text x="169.192" y="576" transform="rotate(-90 169.192 576)">7,17</text>
+<text x="202.447" y="556.8" transform="rotate(-90 202.447 556.8)">7,16</text>
+<text x="235.703" y="576" transform="rotate(-90 235.703 576)">7,15</text>
+<text x="268.958" y="556.8" transform="rotate(-90 268.958 556.8)">7,14</text>
+<text x="302.213" y="576" transform="rotate(-90 302.213 576)">7,13</text>
+<text x="335.469" y="556.8" transform="rotate(-90 335.469 556.8)">7,12</text>
+<text x="368.724" y="576" transform="rotate(-90 368.724 576)">7,11</text>
+<text x="401.979" y="556.8" transform="rotate(-90 401.979 556.8)">7,10</text>
+<text x="435.235" y="576" transform="rotate(-90 435.235 576)">7,9</text>
+<text x="468.49" y="556.8" transform="rotate(-90 468.49 556.8)">7,8</text>
+<text x="501.746" y="576" transform="rotate(-90 501.746 576)">7,7</text>
+<text x="535.001" y="556.8" transform="rotate(-90 535.001 556.8)">7,6</text>
+<text x="568.256" y="576" transform="rotate(-90 568.256 576)">7,5</text>
+<text x="601.512" y="556.8" transform="rotate(-90 601.512 556.8)">7,4</text>
+<text x="634.767" y="576" transform="rotate(-90 634.767 576)">7,3</text>
+<text x="668.022" y="556.8" transform="rotate(-90 668.022 556.8)">7,2</text>
+<text x="701.278" y="576" transform="rotate(-90 701.278 576)">7,1</text>
+<text x="36.1703" y="614.4" transform="rotate(-90 36.1703 614.4)">6,21</text>
+<text x="69.4256" y="595.2" transform="rotate(-90 69.4256 595.2)">6,20</text>
+<text x="102.681" y="614.4" transform="rotate(-90 102.681 614.4)">6,19</text>
+<text x="135.936" y="595.2" transform="rotate(-90 135.936 595.2)">6,18</text>
+<text x="169.192" y="614.4" transform="rotate(-90 169.192 614.4)">6,17</text>
+<text x="202.447" y="595.2" transform="rotate(-90 202.447 595.2)">6,16</text>
+<text x="235.703" y="614.4" transform="rotate(-90 235.703 614.4)">6,15</text>
+<text x="268.958" y="595.2" transform="rotate(-90 268.958 595.2)">6,14</text>
+<text x="302.213" y="614.4" transform="rotate(-90 302.213 614.4)">6,13</text>
+<text x="335.469" y="595.2" transform="rotate(-90 335.469 595.2)">6,12</text>
+<text x="368.724" y="614.4" transform="rotate(-90 368.724 614.4)">6,11</text>
+<text x="401.979" y="595.2" transform="rotate(-90 401.979 595.2)">6,10</text>
+<text x="435.235" y="614.4" transform="rotate(-90 435.235 614.4)">6,9</text>
+<text x="468.49" y="595.2" transform="rotate(-90 468.49 595.2)">6,8</text>
+<text x="501.746" y="614.4" transform="rotate(-90 501.746 614.4)">6,7</text>
+<text x="535.001" y="595.2" transform="rotate(-90 535.001 595.2)">6,6</text>
+<text x="568.256" y="614.4" transform="rotate(-90 568.256 614.4)">6,5</text>
+<text x="601.512" y="595.2" transform="rotate(-90 601.512 595.2)">6,4</text>
+<text x="634.767" y="614.4" transform="rotate(-90 634.767 614.4)">6,3</text>
+<text x="668.022" y="595.2" transform="rotate(-90 668.022 595.2)">6,2</text>
+<text x="701.278" y="614.4" transform="rotate(-90 701.278 614.4)">6,1</text>
+<text x="36.1703" y="652.8" transform="rotate(-90 36.1703 652.8)">5,21</text>
+<text x="69.4256" y="633.6" transform="rotate(-90 69.4256 633.6)">5,20</text>
+<text x="102.681" y="652.8" transform="rotate(-90 102.681 652.8)">5,19</text>
+<text x="135.936" y="633.6" transform="rotate(-90 135.936 633.6)">5,18</text>
+<text x="169.192" y="652.8" transform="rotate(-90 169.192 652.8)">5,17</text>
+<text x="202.447" y="633.6" transform="rotate(-90 202.447 633.6)">5,16</text>
+<text x="235.703" y="652.8" transform="rotate(-90 235.703 652.8)">5,15</text>
+<text x="268.958" y="633.6" transform="rotate(-90 268.958 633.6)">5,14</text>
+<text x="302.213" y="652.8" transform="rotate(-90 302.213 652.8)">5,13</text>
+<text x="335.469" y="633.6" transform="rotate(-90 335.469 633.6)">5,12</text>
+<text x="368.724" y="652.8" transform="rotate(-90 368.724 652.8)">5,11</text>
+<text x="401.979" y="633.6" transform="rotate(-90 401.979 633.6)">5,10</text>
+<text x="435.235" y="652.8" transform="rotate(-90 435.235 652.8)">5,9</text>
+<text x="468.49" y="633.6" transform="rotate(-90 468.49 633.6)">5,8</text>
+<text x="501.746" y="652.8" transform="rotate(-90 501.746 652.8)">5,7</text>
+<text x="535.001" y="633.6" transform="rotate(-90 535.001 633.6)">5,6</text>
+<text x="568.256" y="652.8" transform="rotate(-90 568.256 652.8)">5,5</text>
+<text x="601.512" y="633.6" transform="rotate(-90 601.512 633.6)">5,4</text>
+<text x="634.767" y="652.8" transform="rotate(-90 634.767 652.8)">5,3</text>
+<text x="668.022" y="633.6" transform="rotate(-90 668.022 633.6)">5,2</text>
+<text x="701.278" y="652.8" transform="rotate(-90 701.278 652.8)">5,1</text>
+<text x="36.1703" y="691.2" transform="rotate(-90 36.1703 691.2)">4,21</text>
+<text x="69.4256" y="672" transform="rotate(-90 69.4256 672)">4,20</text>
+<text x="102.681" y="691.2" transform="rotate(-90 102.681 691.2)">4,19</text>
+<text x="135.936" y="672" transform="rotate(-90 135.936 672)">4,18</text>
+<text x="169.192" y="691.2" transform="rotate(-90 169.192 691.2)">4,17</text>
+<text x="202.447" y="672" transform="rotate(-90 202.447 672)">4,16</text>
+<text x="235.703" y="691.2" transform="rotate(-90 235.703 691.2)">4,15</text>
+<text x="268.958" y="672" transform="rotate(-90 268.958 672)">4,14</text>
+<text x="302.213" y="691.2" transform="rotate(-90 302.213 691.2)">4,13</text>
+<text x="335.469" y="672" transform="rotate(-90 335.469 672)">4,12</text>
+<text x="368.724" y="691.2" transform="rotate(-90 368.724 691.2)">4,11</text>
+<text x="401.979" y="672" transform="rotate(-90 401.979 672)">4,10</text>
+<text x="435.235" y="691.2" transform="rotate(-90 435.235 691.2)">4,9</text>
+<text x="468.49" y="672" transform="rotate(-90 468.49 672)">4,8</text>
+<text x="501.746" y="691.2" transform="rotate(-90 501.746 691.2)">4,7</text>
+<text x="535.001" y="672" transform="rotate(-90 535.001 672)">4,6</text>
+<text x="568.256" y="691.2" transform="rotate(-90 568.256 691.2)">4,5</text>
+<text x="601.512" y="672" transform="rotate(-90 601.512 672)">4,4</text>
+<text x="634.767" y="691.2" transform="rotate(-90 634.767 691.2)">4,3</text>
+<text x="668.022" y="672" transform="rotate(-90 668.022 672)">4,2</text>
+<text x="701.278" y="691.2" transform="rotate(-90 701.278 691.2)">4,1</text>
+<text x="36.1703" y="729.6" transform="rotate(-90 36.1703 729.6)">3,21</text>
+<text x="69.4256" y="710.4" transform="rotate(-90 69.4256 710.4)">3,20</text>
+<text x="102.681" y="729.6" transform="rotate(-90 102.681 729.6)">3,19</text>
+<text x="135.936" y="710.4" transform="rotate(-90 135.936 710.4)">3,18</text>
+<text x="169.192" y="729.6" transform="rotate(-90 169.192 729.6)">3,17</text>
+<text x="202.447" y="710.4" transform="rotate(-90 202.447 710.4)">3,16</text>
+<text x="235.703" y="729.6" transform="rotate(-90 235.703 729.6)">3,15</text>
+<text x="268.958" y="710.4" transform="rotate(-90 268.958 710.4)">3,14</text>
+<text x="302.213" y="729.6" transform="rotate(-90 302.213 729.6)">3,13</text>
+<text x="335.469" y="710.4" transform="rotate(-90 335.469 710.4)">3,12</text>
+<text x="368.724" y="729.6" transform="rotate(-90 368.724 729.6)">3,11</text>
+<text x="401.979" y="710.4" transform="rotate(-90 401.979 710.4)">3,10</text>
+<text x="435.235" y="729.6" transform="rotate(-90 435.235 729.6)">3,9</text>
+<text x="468.49" y="710.4" transform="rotate(-90 468.49 710.4)">3,8</text>
+<text x="501.746" y="729.6" transform="rotate(-90 501.746 729.6)">3,7</text>
+<text x="535.001" y="710.4" transform="rotate(-90 535.001 710.4)">3,6</text>
+<text x="568.256" y="729.6" transform="rotate(-90 568.256 729.6)">3,5</text>
+<text x="601.512" y="710.4" transform="rotate(-90 601.512 710.4)">3,4</text>
+<text x="634.767" y="729.6" transform="rotate(-90 634.767 729.6)">3,3</text>
+<text x="668.022" y="710.4" transform="rotate(-90 668.022 710.4)">3,2</text>
+<text x="701.278" y="729.6" transform="rotate(-90 701.278 729.6)">3,1</text>
+<text x="36.1703" y="768" transform="rotate(-90 36.1703 768)">2,21</text>
+<text x="69.4256" y="748.8" transform="rotate(-90 69.4256 748.8)">2,20</text>
+<text x="102.681" y="768" transform="rotate(-90 102.681 768)">2,19</text>
+<text x="135.936" y="748.8" transform="rotate(-90 135.936 748.8)">2,18</text>
+<text x="169.192" y="768" transform="rotate(-90 169.192 768)">2,17</text>
+<text x="202.447" y="748.8" transform="rotate(-90 202.447 748.8)">2,16</text>
+<text x="235.703" y="768" transform="rotate(-90 235.703 768)">2,15</text>
+<text x="268.958" y="748.8" transform="rotate(-90 268.958 748.8)">2,14</text>
+<text x="302.213" y="768" transform="rotate(-90 302.213 768)">2,13</text>
+<text x="335.469" y="748.8" transform="rotate(-90 335.469 748.8)">2,12</text>
+<text x="368.724" y="768" transform="rotate(-90 368.724 768)">2,11</text>
+<text x="401.979" y="748.8" transform="rotate(-90 401.979 748.8)">2,10</text>
+<text x="435.235" y="768" transform="rotate(-90 435.235 768)">2,9</text>
+<text x="468.49" y="748.8" transform="rotate(-90 468.49 748.8)">2,8</text>
+<text x="501.746" y="768" transform="rotate(-90 501.746 768)">2,7</text>
+<text x="535.001" y="748.8" transform="rotate(-90 535.001 748.8)">2,6</text>
+<text x="568.256" y="768" transform="rotate(-90 568.256 768)">2,5</text>
+<text x="601.512" y="748.8" transform="rotate(-90 601.512 748.8)">2,4</text>
+<text x="634.767" y="768" transform="rotate(-90 634.767 768)">2,3</text>
+<text x="668.022" y="748.8" transform="rotate(-90 668.022 748.8)">2,2</text>
+<text x="701.278" y="768" transform="rotate(-90 701.278 768)">2,1</text>
+<text x="36.1703" y="806.4" transform="rotate(-90 36.1703 806.4)">1,21</text>
+<text x="69.4256" y="787.2" transform="rotate(-90 69.4256 787.2)">1,20</text>
+<text x="102.681" y="806.4" transform="rotate(-90 102.681 806.4)">1,19</text>
+<text x="135.936" y="787.2" transform="rotate(-90 135.936 787.2)">1,18</text>
+<text x="169.192" y="806.4" transform="rotate(-90 169.192 806.4)">1,17</text>
+<text x="202.447" y="787.2" transform="rotate(-90 202.447 787.2)">1,16</text>
+<text x="235.703" y="806.4" transform="rotate(-90 235.703 806.4)">1,15</text>
+<text x="268.958" y="787.2" transform="rotate(-90 268.958 787.2)">1,14</text>
+<text x="302.213" y="806.4" transform="rotate(-90 302.213 806.4)">1,13</text>
+<text x="335.469" y="787.2" transform="rotate(-90 335.469 787.2)">1,12</text>
+<text x="368.724" y="806.4" transform="rotate(-90 368.724 806.4)">1,11</text>
+<text x="401.979" y="787.2" transform="rotate(-90 401.979 787.2)">1,10</text>
+<text x="435.235" y="806.4" transform="rotate(-90 435.235 806.4)">1,9</text>
+<text x="468.49" y="787.2" transform="rotate(-90 468.49 787.2)">1,8</text>
+<text x="501.746" y="806.4" transform="rotate(-90 501.746 806.4)">1,7</text>
+<text x="535.001" y="787.2" transform="rotate(-90 535.001 787.2)">1,6</text>
+<text x="568.256" y="806.4" transform="rotate(-90 568.256 806.4)">1,5</text>
+<text x="601.512" y="787.2" transform="rotate(-90 601.512 787.2)">1,4</text>
+<text x="634.767" y="806.4" transform="rotate(-90 634.767 806.4)">1,3</text>
+<text x="668.022" y="787.2" transform="rotate(-90 668.022 787.2)">1,2</text>
+<text x="701.278" y="806.4" transform="rotate(-90 701.278 806.4)">1,1</text>
+</g>
+</g>
+</svg>

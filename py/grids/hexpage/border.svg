@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="769" height="887.81" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="cross" d="M 0 0 m -2 0 h 4 M 0 0 m 0 -2 v 4" />
+<g id="c-row">
+<use x="443.405" y="0" xlink:href="#cross" />
+</g>
+<path id="bottoms" d="M 0 0" />
+<path id="tops" d="M 0 0 l 443.405 0" />
+<path id="outline" d="M 0 0 l 221.703 -384 443.405 0 221.703 384 -221.703 384 -443.405 0 z" />
+</defs>
+<g transform="translate(769,0.5) rotate(90)">
+<g id="grid" style="fill: none; stroke: #000000; stroke-opacity: 1; stroke-width: 1; ">
+<use x="0" y="384" xlink:href="#outline" />
+<use x="665.108" y="768" xlink:href="#bottoms" />
+</g>
+<g id="centers" style="stroke: #000000; stroke-opacity: 1; ">
+<use x="0" y="384" xlink:href="#c-row" />
+</g>
+</g>
+</svg>

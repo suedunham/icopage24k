@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1344.5" height="1109.01" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="bottoms" d="M 0 0 l 110.851 192 m 221.703 0 l 110.851 -192 m 221.703 0" />
+<path id="tops" d="M 0 0 l 221.703 0 110.851 -192 221.703 0 110.851 192 221.703 0" />
+<path id="outline" d="M 0 0 l 221.703 0 110.851 -192 221.703 0 110.851 192 221.703 0 110.851 192 -110.851 192 110.851 192 -110.851 192 110.851 192 -110.851 192 -221.703 0 -110.851 -192 -221.703 0 -110.851 192 -221.703 0 -110.851 -192 110.851 -192 -110.851 -192 110.851 -192 -110.851 -192 z" />
+</defs>
+<g transform="translate(1344.5,0.25) rotate(90)">
+<g id="grid" style="fill: none; stroke: #000000; stroke-opacity: 1; stroke-width: 0.5; ">
+<use x="110.851" y="192" xlink:href="#outline" />
+<use x="332.554" y="192" xlink:href="#bottoms" />
+<use x="110.851" y="576" xlink:href="#tops" />
+<use x="332.554" y="576" xlink:href="#bottoms" />
+<use x="110.851" y="960" xlink:href="#tops" />
+<use x="332.554" y="960" xlink:href="#bottoms" />
+</g>
+<g id="coordinates" style="fill: #000000; fill-opacity: 1; font-family: Atkinson Hyperlegible; font-size: 16px; text-anchor: middle; ">
+<text x="427.703" y="384" transform="rotate(-90 427.703 384)">3,3</text>
+<text x="760.256" y="192" transform="rotate(-90 760.256 192)">3,2</text>
+<text x="1092.81" y="384" transform="rotate(-90 1092.81 384)">3,1</text>
+<text x="427.703" y="768" transform="rotate(-90 427.703 768)">2,3</text>
+<text x="760.256" y="576" transform="rotate(-90 760.256 576)">2,2</text>
+<text x="1092.81" y="768" transform="rotate(-90 1092.81 768)">2,1</text>
+<text x="427.703" y="1152" transform="rotate(-90 427.703 1152)">1,3</text>
+<text x="760.256" y="960" transform="rotate(-90 760.256 960)">1,2</text>
+<text x="1092.81" y="1152" transform="rotate(-90 1092.81 1152)">1,1</text>
+</g>
+</g>
+</svg>
