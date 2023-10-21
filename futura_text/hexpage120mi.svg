@@ -87,14 +87,6 @@
   font-weight:500;
   line-height:32px
 }
-.dashed {
-  stroke:#000000;
-  stroke-dasharray:1.00063,6.00378;
-  stroke-dashoffset:0;
-  stroke-linecap:square;
-  stroke-opacity:1;
-  stroke-width:1.00063
-}
 .diagram {
   fill:none;
   stroke:#000000;
@@ -110,12 +102,6 @@
   stroke:#000000;
   stroke-opacity:1;
   stroke-width:.5
-}
-.grid-highlight {
-  fill:none;
-  stroke:#000000;
-  stroke-opacity:1;
-  stroke-width:1
 }
 .hex-coord {
   fill:#000000;
@@ -145,6 +131,9 @@
   stroke-opacity:1;
   stroke-width:1
 }
+.index-border-beyond-alt {
+  stroke:#f4f4f4
+}
 .index-text {
   -inkscape-font-specification:'Futura Medium';
   fill:#a0a0a0;
@@ -154,12 +143,6 @@
   stroke:none;
   text-align:center;
   text-anchor:middle
-}
-.linecap-butt {
-  stroke-linecap:butt
-}
-.linejoin-bevel {
-  stroke-linejoin:bevel
 }
 .page-background {
   -inkscape-stroke:none;
@@ -5839,30 +5822,18 @@
          x="887.59198"
          y="667.61591"
          id="textsmallside"
-         transform="rotate(30)"><tspan
-           sodipodi:role="line"
-           id="tspan16-6"
-           x="887.59198"
-           y="667.61591">1¾</tspan></text><text
+         transform="rotate(30)">1¾</text><text
          xml:space="preserve"
          class="scale-text text-9pt text-center"
          x="888.26398"
          y="655.10144"
          id="textsmalllong"
-         transform="rotate(30)"><tspan
-           sodipodi:role="line"
-           id="tspan17-0"
-           x="888.26398"
-           y="655.10144">3½</tspan></text><text
+         transform="rotate(30)">3½</text><text
          xml:space="preserve"
          class="scale-text text-9pt text-center"
          x="447.0625"
          y="984.75464"
-         id="textsmallacross"><tspan
-           sodipodi:role="line"
-           id="tspan58"
-           x="447.0625"
-           y="984.75464">3</tspan></text></g><path
+         id="textsmallacross">3</text></g><path
        class="diagram"
        d="m 542.67894,917.10025 49.72406,28.7082 v 57.41635 l -49.72406,28.7082 -49.72406,-28.7082 v -57.41635 z"
        id="pathscalemiddlehex"
@@ -5884,30 +5855,18 @@
        x="956.81207"
        y="619.19397"
        id="textmiddleside"
-       transform="rotate(30)"><tspan
-         sodipodi:role="line"
-         id="tspan27-0"
-         x="956.81207"
-         y="619.19397">17⅓</tspan></text><text
+       transform="rotate(30)">17⅓</text><text
        xml:space="preserve"
        class="scale-text text-10pt text-center"
        x="957.29871"
        y="584.64331"
        id="textmiddlelong"
-       transform="rotate(30)"><tspan
-         sodipodi:role="line"
-         id="tspan28-7"
-         x="957.29871"
-         y="584.64331">34⅔</tspan></text><text
+       transform="rotate(30)">34⅔</text><text
        xml:space="preserve"
        class="scale-text text-10pt text-center"
        x="542.54559"
        y="942.53473"
-       id="textmiddleacross"><tspan
-         sodipodi:role="line"
-         id="tspan57"
-         x="542.54559"
-         y="942.53473">30</tspan></text><path
+       id="textmiddleacross">30</text><path
        class="diagram"
        d="m 702.35633,824.90985 89.64368,51.7558 v 103.5116 l -89.64368,51.75575 -89.64367,-51.75575 v -103.5116 z"
        id="pathscalebighex"
@@ -5930,30 +5889,18 @@
        x="1072.7112"
        y="538.2674"
        id="textbigside"
-       transform="rotate(30)"><tspan
-         sodipodi:role="line"
-         id="tspan29-4"
-         x="1072.7112"
-         y="538.2674">69¼</tspan></text><text
+       transform="rotate(30)">69¼</text><text
        xml:space="preserve"
        class="scale-text text-11pt text-center"
        x="1072.0292"
        y="466.83176"
        id="textbiglong"
-       transform="rotate(30)"><tspan
-         sodipodi:role="line"
-         id="tspan31-6"
-         x="1072.0292"
-         y="466.83176">138½</tspan></text><text
+       transform="rotate(30)">138½</text><text
        xml:space="preserve"
        class="scale-text text-11pt text-center"
        x="701.54968"
        y="872.49573"
-       id="textbigacross"><tspan
-         sodipodi:role="line"
-         id="tspan56"
-         x="701.54968"
-         y="872.49573">120</tspan></text></g><g
+       id="textbigacross">120</text></g><g
      inkscape:groupmode="layer"
      id="layer15"
      inkscape:label="Index"><g
@@ -6006,65 +5953,37 @@
          class="index-text text-12pt"
          x="728.05609"
          y="177.317"
-         id="textindex5"><tspan
-           sodipodi:role="line"
-           id="tspan37"
-           x="728.05609"
-           y="177.317">−24,−16</tspan></text><text
+         id="textindex5">−24,−16</text><text
          xml:space="preserve"
          class="index-text text-12pt"
          x="664.05603"
          y="177.317"
-         id="textindex7"><tspan
-           sodipodi:role="line"
-           id="tspan36"
-           x="664.05603"
-           y="177.317">−26,−16</tspan></text><text
+         id="textindex7">−26,−16</text><text
          xml:space="preserve"
          class="index-text text-12pt"
          x="760.22412"
          y="121.85325"
-         id="textindex3"><tspan
-           sodipodi:role="line"
-           id="tspan30"
-           x="760.22412"
-           y="121.85325">−23,−15</tspan></text><text
+         id="textindex3">−23,−15</text><text
          xml:space="preserve"
          class="index-text text-12pt"
          x="632.224"
          y="121.85325"
-         id="textindex9"><tspan
-           sodipodi:role="line"
-           id="tspan15"
-           x="632.224"
-           y="121.85325">−27,−15</tspan></text><text
+         id="textindex9">−27,−15</text><text
          xml:space="preserve"
          class="index-text text-12pt"
          x="727.96808"
          y="66.389549"
-         id="textindex1"><tspan
-           sodipodi:role="line"
-           id="tspan35"
-           x="727.96808"
-           y="66.389549">−24,−14</tspan></text><text
+         id="textindex1">−24,−14</text><text
          xml:space="preserve"
          class="index-text text-12pt"
          x="663.96802"
          y="66.389549"
-         id="textindex11"><tspan
-           sodipodi:role="line"
-           id="tspan34"
-           x="663.96802"
-           y="66.389549">−26,−14</tspan></text><text
+         id="textindex11">−26,−14</text><text
          xml:space="preserve"
          class="index-text text-black text-12pt"
          x="696.22406"
          y="121.85325"
-         id="textindexhex"><tspan
-           sodipodi:role="line"
-           id="tspan8"
-           x="696.22406"
-           y="121.85325">−25,−15</tspan></text></g><g
+         id="textindexhex">−25,−15</text></g><g
        inkscape:groupmode="layer"
        id="layer22"
        inkscape:label="Parent"><g
@@ -6105,11 +6024,7 @@
              class="index-text text-black text-12pt"
              x="533.1405"
              y="64.020622"
-             id="textsubhex3big"><tspan
-               sodipodi:role="line"
-               id="tspan12"
-               x="533.1405"
-               y="64.020622">C(−25,−15)</tspan></text></g><g
+             id="textsubhex3big">C(−25,−15)</text></g><g
            inkscape:groupmode="layer"
            id="layer24"
            inkscape:label="Subhex numbers (2)"
@@ -6129,11 +6044,7 @@
              class="index-text text-black text-12pt"
              x="533.1405"
              y="71.020622"
-             id="textsubhex2big"><tspan
-               sodipodi:role="line"
-               id="tspan9"
-               x="533.1405"
-               y="71.020622">C(−25,−15)</tspan></text></g><g
+             id="textsubhex2big">C(−25,−15)</text></g><g
            inkscape:groupmode="layer"
            id="layer31"
            inkscape:label="Hex number"
@@ -6142,20 +6053,12 @@
              class="index-text text-black text-12pt"
              x="533.1405"
              y="84.233002"
-             id="texthexbig"><tspan
-               sodipodi:role="line"
-               id="tspan53"
-               x="533.1405"
-               y="84.233002">C(−25,−15)</tspan></text></g><text
+             id="texthexbig">C(−25,−15)</text></g><text
            xml:space="preserve"
            class="scale-text text-center text-9pt"
            x="533.25452"
            y="44.4482"
-           id="texthexwithin"><tspan
-             sodipodi:role="line"
-             id="tspan1"
-             x="533.25452"
-             y="44.4482">within</tspan></text></g><g
+           id="texthexwithin">within</text></g><g
          inkscape:groupmode="layer"
          id="layer16"
          inkscape:label="Parent downward face"
@@ -6179,11 +6082,7 @@
            class="scale-text text-center text-9pt"
            x="533.25433"
            y="104.92967"
-           id="textdownwithin"><tspan
-             sodipodi:role="line"
-             id="tspan50"
-             x="533.25433"
-             y="104.92967">within</tspan></text></g><g
+           id="textdownwithin">within</text></g><g
          inkscape:groupmode="layer"
          id="layer18"
          inkscape:label="Parent upward face"
@@ -6207,11 +6106,7 @@
            class="scale-text text-center text-9pt"
            x="533.25433"
            y="58.929684"
-           id="textupwithin"><tspan
-             sodipodi:role="line"
-             id="tspan2"
-             x="533.25433"
-             y="58.929684">within</tspan></text></g></g></g><g
+           id="textupwithin">within</text></g></g></g><g
      inkscape:groupmode="layer"
      id="layer11"
      inkscape:label="Index alignment"
@@ -6241,29 +6136,17 @@
        class="index-text text-align text-12pt"
        x="595.46399"
        y="177.317"
-       id="text41"><tspan
-         sodipodi:role="line"
-         id="tspan40"
-         x="595.46399"
-         y="177.317">0</tspan></text><text
+       id="text41">0</text><text
        xml:space="preserve"
        class="index-text text-align text-12pt"
        x="563.46393"
        y="121.85325"
-       id="text40"><tspan
-         sodipodi:role="line"
-         id="tspan39"
-         x="563.46393"
-         y="121.85325">0</tspan></text><text
+       id="text40">0</text><text
        xml:space="preserve"
        class="index-text text-align text-12pt"
        x="595.46503"
        y="66.389549"
-       id="text39"><tspan
-         sodipodi:role="line"
-         id="tspan38"
-         x="595.46503"
-         y="66.389549">0</tspan></text></g><g
+       id="text39">0</text></g><g
      inkscape:groupmode="layer"
      id="layer19"
      inkscape:label="Titles"
@@ -6272,11 +6155,7 @@
        x="22.916666"
        y="81.111076"
        id="textsubtitles"
-       class="title text-14pt"><tspan
-         sodipodi:role="line"
-         x="22.916666"
-         y="81.111076"
-         id="tspan8771">Subtitles, Inclusions</tspan></text><text
+       class="title text-14pt">Subtitles, Inclusions</text><text
        xml:space="preserve"
        x="22.661467"
        y="50.497166"
