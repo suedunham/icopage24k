@@ -670,11 +670,11 @@ That's just tough talons to us, I guess.
 |           |            | Side           |  17.320508 |   17⅓   |
 |           | 3 foot     | Point to point |  3.4641016 |   3½    |
 |           |            | Side           |  1.7320508 |   1¾    |
-| Hex44-lg  | 44 league  | Point to point |  50.806824 |   50⅘   |
+| Hex44-le  | 44 league  | Point to point |  50.806824 |   50⅘   |
 |           |            | Side           |  25.403412 |   25⅖   |
 |           | 2 league   | Point to point |  2.3094011 |   2¼    |
 |           |            | Side           |  1.1547005 |   1⅛    |
-| Hex2-lg   | 2 league   | Point to point |  2.3094011 |   2¼    |
+| Hex2-le   | 2 league   | Point to point |  2.3094011 |   2¼    |
 |           |            | Side           |  1.1547005 |   1⅛    |
 |           | 600 yard   | Point to point |  692.82032 |   692⅔  |
 |           |            | Side           |  346.41016 |   346⅓  |

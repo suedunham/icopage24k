@@ -7,24 +7,38 @@ import numpy as np
 import numpy.typing as npt
 
 
-ACROSS = 4
-LONG = 5
-# ACROSS = 40
-# LONG = 53
+# This data is ultimately intended to be drawn from the settings and
+# calculations in make_hexpage_grids.py. Until that glad day...
 COORD_BEARING = 270
 COORD_DISTANCE = 6
 COORD_SIZE = 5.333
 GRID_GRAIN = 'h'
 GRID_GRAIN_HORIZONTAL = 'h'
-file = Path('grids/hexpage/div4.svg')
-new_file = Path('grids/hexpage/div4_cart.svg')
-# file = Path('grids/hexpage/div40.svg')
-# new_file = Path('grids/hexpage/div40_cart.svg')
 ATTR_TRANSFORM = 'transform'
 ATTR_X = 'x'
 ATTR_Y = 'y'
 NAMESPACE = 'http://www.w3.org/2000/svg'
 TAG_TEXT = f'{{{NAMESPACE}}}text'
+div_specs = {4: {'across': 4,
+                 'long': 5,
+                 'file': Path('grids/hexpage/div4.svg'),
+                 'new_file': Path('grids/hexpage/div4_cart.svg')},
+             10: {'across': 10,
+                  'long': 13,
+                  'file': Path('grids/hexpage/div10.svg'),
+                  'new_file': Path('grids/hexpage/div10_cart.svg')},
+             16: {'across': 16,
+                  'long': 21,
+                  'file': Path('grids/hexpage/div16.svg'),
+                  'new_file': Path('grids/hexpage/div16_cart.svg')},
+             22: {'across': 22,
+                  'long': 29,
+                  'file': Path('grids/hexpage/div22.svg'),
+                  'new_file': Path('grids/hexpage/div22_cart.svg')},
+             40: {'across': 40,
+                  'long': 53,
+                  'file': Path('grids/hexpage/div40.svg'),
+                  'new_file': Path('grids/hexpage/div40_cart.svg')}}
 
 
 class CoordShifter():
@@ -138,10 +152,11 @@ def align_border_across():
 
 def run_main() -> None:
     """Run script."""
-    svg = parse_svg(file)
+    specs = div_specs[10]
+    svg = parse_svg(specs['file'])
     # filter_coordinates(svg)
-    svg = shift_coordinates(svg, ACROSS, LONG)
-    write_svg(svg, new_file, 'utf-8', True)
+    svg = shift_coordinates(svg, specs['across'], specs['long'])
+    write_svg(svg, specs['new_file'], 'utf-8', True)
 
 
 if __name__ == '__main__':

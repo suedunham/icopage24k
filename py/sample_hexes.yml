@@ -7,6 +7,7 @@ fixed:
   coord_color: '000000'
   coord_font: Atkinson Hyperlegible
   coord_format: ""
+  coord_origin: ll
   grid_color: '000000'
   grid_grain: h
   grid_thickness: 0.5
@@ -15,35 +16,35 @@ fixed:
 variable:
   2:
     coord_distance: 206
-    coord_format: '%03x%03y'
+    coord_format: '%x,%y'
     coord_size: 16
   4:
-    coord_distance: 95
-    coord_format: '%03x%03y'
-    coord_size: 16
+    coord_distance: 84
+    coord_format: '%x,%y'
+    coord_size: 10.667
   10:
-    coord_distance: 32
-    coord_format: '%03x%03y'
-    coord_size: 12
+    coord_distance: 34
+    coord_format: '%x,%y'
+    coord_size: 10.667
   16:
     coord_distance: 17
-    coord_format: '%03x%03y'
+    coord_format: '%x,%y'
     coord_size: 10.667
   20:
     coord_distance: 14
-    coord_format: '%03x%03y'
+    coord_format: '%x,%y'
     coord_size: 8
   22:
-    coord_distance: 12
-    coord_format: '%03x%03y'
+    coord_distance: 10
+    coord_format: '%x,%y'
     coord_size: 8
   40:
     coord_distance: 6
-    coord_format: '%03x%03y'
+    coord_format: '%x,%y'
     coord_size: 5.333
   44:
     coord_distance: 5
-    coord_format: '%03x%03y'
+    coord_format: '%x,%y'
     coord_size: 5.333
 
 hexpage:
