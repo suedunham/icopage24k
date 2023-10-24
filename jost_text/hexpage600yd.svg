@@ -13,24 +13,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview2254"
-     pagecolor="#505050"
-     bordercolor="#eeeeee"
-     borderopacity="1"
-     inkscape:showpageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#505050"
      showgrid="false"
-     inkscape:zoom="2.0000002"
-     inkscape:cx="475.49995"
-     inkscape:cy="996.2499"
-     inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer13"
-     showguides="false"><inkscape:grid
+     inkscape:lockguides="true"     showguides="false"><inkscape:grid
        id="grid2257"
        units="px"
        originx="408"
@@ -1612,7 +1596,8 @@
      inkscape:groupmode="layer"
      id="layer21"
      inkscape:label="Scale alignment"
-     style="display:none"><path
+     style="display:none"
+     sodipodi:insensitive="true"><path
        class="diagram scale-align"
        d="m 446.86453,972.41865 25.77048,14.8786 -6e-5,29.75745 -25.77049,14.8786 -25.77049,-14.8786 7e-5,-29.75746 z"
        id="pathscalignsmallhex"
@@ -1665,7 +1650,8 @@
      inkscape:groupmode="layer"
      id="layer20"
      inkscape:label="Scale"
-     style="display:inline"><text
+     style="display:inline"
+     sodipodi:insensitive="true"><text
        xml:space="preserve"
        class="scale-text text-4pt"
        x="130.71518"
