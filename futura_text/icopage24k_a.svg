@@ -22,19 +22,19 @@
      showguides="false"><inkscape:grid
        id="grid1"
        units="px"
-       originx="408"
        originx="528"
        spacingx="9.6"
        spacingy="5.54256"
        empcolor="#0099e5"
        empopacity="0.30196078"
        color="#0099e5"
-       opacity="0.14901961"
+       opacity="0.14902"
        empspacing="6"
        dotted="false"
        gridanglex="30"
        gridanglez="30"
-       visible="false" /><sodipodi:guide
+       visible="false"
+       originy="0" /><sodipodi:guide
        position="0,1032"
        orientation="0,816"
        id="guide4"
@@ -7097,8 +7097,7 @@
          id="path71563" /></g></g><g
      inkscape:label="Scale"
      id="g111904"
-     inkscape:groupmode="layer"
-     sodipodi:insensitive="true"><g
+     inkscape:groupmode="layer"><g
        id="glittlelatitude"><path
          class="dashed"
          d="m 578.26855,1031.5002 h 44.05092"
@@ -7157,7 +7156,7 @@
        inkscape:groupmode="layer"
        id="g111756"
        inkscape:label="Mile"
-       style="display:inline"><g
+       style="display:none"><g
          id="glittlemile"><text
            xml:space="preserve"
            class="scale-text text-center"
@@ -7210,7 +7209,7 @@
        inkscape:groupmode="layer"
        id="g111902"
        inkscape:label="League"
-       style="display:none"><g
+       style="display:inline"><g
          id="glittleleague"><text
            xml:space="preserve"
            class="scale-text text-center"
@@ -7262,12 +7261,20 @@
            x="731.4021"
            y="923.05536"
            id="text111858"
-           class="scale-text text-center">440</text></g><text
-         xml:space="preserve"
-         class="scale-text text-right"
-         x="793.2561"
-         y="886.43921"
-         id="textleaguetoyard">1 league = 4,800 yard</text></g><g
+           class="scale-text text-center">440</text></g><g
+         id="g1"><text
+           xml:space="preserve"
+           class="scale-text text-right"
+           x="793.2561"
+           y="886.43921"
+           id="textleaguetoyard">1 league = 4,800 yard</text><text
+           xml:space="preserve"
+           class="scale-text text-right"
+           x="1166.6256"
+           y="501.70386"
+           id="textleaguetoyard-8"
+           style="font-size:10.6667px;line-height:16px;font-family:Futura, Arial, Helvetica, sans;-inkscape-font-specification:Futura;text-align:end;text-anchor:end;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+           transform="rotate(30)">1 league = 4,800 yard</text></g></g><g
        id="glittlehex"><path
          class="arrow"
          d="m 545.8445,979.58951 47.48554,27.41579"
