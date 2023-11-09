@@ -1,40 +1,23 @@
-from dataclasses import dataclass
-import re
+from collections.abc import Sequence
+from enum import StrEnum
 import subprocess
 from pathlib import Path
+import re
 import shutil
-from typing import Any, cast, Optional, Mapping, TypedDict
+from typing import Any, Literal, Mapping, Optional, Pattern
+from typing_extensions import Annotated
+
+from pydantic import BaseModel, Field, PlainSerializer, RootModel
+from pydantic.functional_validators import AfterValidator, BeforeValidator
 
 
+COORD_FORMAT = 'cr'
+# COORD_FORMAT_ALT = 'xy'
 TOOL = 'mkhexgrid'
-HELP_URL = 'https://www.nomic.net/~uckelman/mkhexgrid/mkhexgrid.html'
-OUTPUT = 'output'
-OUTPUT_PNG = 'png'
-OUTPUT_PS = 'ps'
-OUTPUT_SVG = 'svg'
-OUTPUTS = [OUTPUT_PNG, OUTPUT_PS, OUTPUT_SVG]
-PS_UNIT_INCH = 'in'
-PS_UNIT_MILLIMETER = 'mm'
-PS_UNIT_POINT = 'pt'
-PS_UNITS = [PS_UNIT_INCH, PS_UNIT_MILLIMETER, PS_UNIT_POINT]
-GRID_START_IN = 'i'
-GRID_START_OUT = 'o'
-GRID_STARTS = [GRID_START_IN, GRID_START_OUT]
-GRID_GRAIN_HORIZONTAL = 'h'
-GRID_GRAIN_VERTICAL = 'v'
-GRID_GRAINS = [GRID_GRAIN_HORIZONTAL, GRID_GRAIN_VERTICAL]
-COORD_ORIGIN_UPPER_LEFT = 'ul'
-COORD_ORIGIN_UPPER_RIGHT = 'ur'
-COORD_ORIGIN_LOWER_LEFT = 'll'
-COORD_ORIGIN_LOWER_RIGHT = 'lr'
-COORD_ORIGINS = [COORD_ORIGIN_UPPER_LEFT, COORD_ORIGIN_UPPER_RIGHT,
-                 COORD_ORIGIN_LOWER_LEFT, COORD_ORIGIN_LOWER_RIGHT]
-CENTER_STYLE_NONE = 'n'
-CENTER_STYLE_DOT = 'd'
-CENTER_STYLE_CROSS = 'c'
-CENTER_STYLES = [CENTER_STYLE_NONE, CENTER_STYLE_DOT, CENTER_STYLE_CROSS]
-hex_color_pattern = re.compile(r'(?i)^[0-9A-F]{6}$')
-coord_format_pattern = re.compile(r'^(?:.*%(?:t?[CR]|0?\d?[cr])){2}.*$')
+UNIT_PIXELS = 'px'
+
+MEASURE = 'measure'
+UNIT = 'unit'
 
 
 class BaseError(Exception):
@@ -62,504 +45,379 @@ class ProgramNotFoundError(BaseError):
                         f'tool="C:\\path\\to\\{argument}.exe")')
 
 
-class UnknownParameterError(BaseError):
-    """Unknown error passed to MkHexGrid object."""
-
-    def __init__(self, argument: str, allowed_values: list[str]) -> None:
-        super().__init__(argument)
-        delim = ', '
-        self.message = (f'An unknown parameter, "{argument}", was given to '
-                        'the MkHexGrid object.\nAllowed parameters include the'
-                        f' following:\n{delim.join(sorted(allowed_values))}')
+class MhgOutput(StrEnum):
+    """Allowed mkHexGrid output formats."""
+    PNG = 'png'     # * Tool default
+    PS = 'ps'
+    SVG = 'svg'
 
 
-class ParamBase():
-    """Base class for parameter classes."""
-
-    def __init__(self, param: str, value: Any, tool_arg: str = "") -> None:
-        self.param = param
-        self.value = value
-        self.tool_arg = tool_arg
-
-    def __str__(self) -> str:
-        """String used for parameter in subprocess call."""
-        return f'{self.tool_arg}={str(self.value)}'
-
-    def debug(self) -> tuple[bool, str]:
-        """Return passed."""
-        return self.get_pass_result()
-
-    def get_pass_result(self) -> tuple[bool, str]:
-        """Get default debug test passed result tuple."""
-        return (True, f'{self.param} passed')
+class MhgPsUnit(StrEnum):
+    """Allowed units used in mkhexgrid PostScript values."""
+    INCH = 'in'
+    MILLIMETER = 'mm'
+    POINT = 'pt'
 
 
-class ParamFromList(ParamBase):
-    """Base class for parameters within listed values."""
+class MhgGridStart(StrEnum):
+    """Allowed values for mkhexgrid grid_start parameter.
 
-    def __init__(self, param: str, value: str, tool_arg: str,
-                 value_options: list[str]) -> None:
-        """Initialize object."""
-        super().__init__(param, value, tool_arg)
-        self.value_options = value_options
-
-    def debug(self) -> tuple[bool, str]:
-        """Check given parameter value for problems."""
-        return_value = self.get_pass_result()
-        if self.value not in self.value_options:
-            return_value = (False, self.get_list_message())
-        return return_value
-
-    def get_list_message(self) -> str:
-        """Get debug message for value not in list."""
-        delim = '", "'
-        return (f'The parameter, "{self.param}", must be one of the '
-                f'following values: "{delim.join(self.value_options)}".\n'
-                f'Instead, "{self.value}" was given.')
+    What this means changes with the grid_grain and coord_origin params.
+    For the default vertical grid with its origin in the upper left, OUT
+    means that the first column is higher than the next. With IN, it is
+    lower. Other combinations may have unintuitive results.
+    """
+    IN = 'i'
+    OUT = 'o'   # * Tool default
 
 
-class ParamNumber(ParamBase):
-    """Class with numeric arguments."""
+class MhgGridGrain(StrEnum):
+    """Allowed values for mkhexgrid grid_grain parameter."""
+    HORIZONTAL = 'h'    # Hexes are points up
+    VERTICAL = 'v'      # * Hexes are sides up
 
-    def debug_float(self, output_obj: Optional[ParamFromList] = None
-                    ) -> tuple[bool, str]:
-        """Check that value can be converted to float."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". A number is required.')
-        value = self.get_value_numeric(output_obj)
-        try:
-            _ = float(value)
-        except ValueError:
-            return_value = (False, message)
-        return return_value
 
-    def debug_int(self, output_obj: Optional[ParamFromList] = None
-                  ) -> tuple[bool, str]:
-        """Check that value can be converted to int."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". An integer is required.')
-        value = self.get_value_numeric(output_obj)
-        try:
-            value_int = int(value)
-        except ValueError:
-            return_value = (False, message)
-        else:
-            if isinstance(value, float) and value != value_int:
-                return_value = (False, message)
-        return return_value
+class MhgCoordOrigin(StrEnum):
+    """Allowed values for mkhexgrid coord_origin parameter."""
+    UPPER_LEFT = 'ul'   # * Tool default
+    UPPER_RIGHT = 'ur'
+    LOWER_LEFT = 'll'
+    LOWER_RIGHT = 'lr'
 
-    def get_value_numeric(self, output_obj: Optional[ParamFromList] = None
-                          ) -> str | int | float:
-        """Get numeric part of value without any unit present."""
-        value = self.value
-        if output_obj is not None:
-            if output_obj.value == OUTPUT_PS:
-                try:
-                    unit = value[-2:]
-                except TypeError:
-                    pass
-                else:
-                    if unit in OUTPUTS:
-                        value = value[:-2]
+
+class MhgCenterStyle(StrEnum):
+    """Allowed values for mkhexgrid center_style parameter."""
+    NONE = 'n'  # * Tool default
+    DOT = 'd'
+    CROSS = 'c'
+
+
+def get_coord_format_re(dim: str) -> Pattern[str]:
+    """Get re pattern for coord_format."""
+    pattern = fr'^(?:.*%(?:t?[{dim.upper()}]|0?\d?[{dim.lower()}])){2}.*$'
+    return re.compile(pattern)
+
+
+def get_measure_re(units: list[str]) -> Pattern[str]:
+    """Get re pattern for parsing number-unit pairs."""
+    pattern = fr'^(?P<measure>-?\d+\.?\d*)(?P<unit>{'|'.join(units)})?$'
+    return re.compile(pattern)
+
+
+coord_format_re = get_coord_format_re(COORD_FORMAT)
+# coord_format_alt_re = get_coord_format_re(COORD_FORMAT_ALT)
+png_svg_color_re = re.compile(r'(?i)^([0-9a-f]{6})$')
+ps_units_re = get_measure_re(list(MhgPsUnit))
+svg_units_re = get_measure_re([UNIT_PIXELS])
+
+
+def get_field(alias: str) -> Any:
+    """Get Field with standard settings."""
+    return Field(default=None, serialization_alias=alias)
+
+
+def get_flag(alias: str) -> Any:
+    """Get Field with standard flag settings."""
+    return Field(default=False, serialization_alias=alias)
+
+
+def validate_coord_format(value: str | None) -> str | None:
+    """Validate the standard coord_format setting."""
+    if value is None:
         return value
+    is_valid = coord_format_re.match(value) or value == ""
+    assert is_valid, (f'{value} is not a valid coord_format, empty string, '
+                      'or None/Null.')
+    return value
 
 
-class ParamArgList(ParamBase):
-    """Class with an argument sometimes with multiple values."""
-
-    def __str__(self) -> str:
-        """String used for in subprocess call, adjusted for tuple."""
-        return_value = f'{self.tool_arg}={str(self.value)}'
-        if isinstance(self.value, list):
-            str_list = ",".join(str(value) for value in self.value)
-            return_value = f'{self.tool_arg}={str_list}'
-        return return_value
+def validate_png_font(value: Path) -> Path:
+    """Validate font installed at given address."""
+    assert shutil.which(value), ('There is no font file installed at '
+                                 f'{value}. A file path is expected.')
+    return value
 
 
-class ParamNoDebug(ParamBase):
-    """Base class for params with no meaningful debug method."""
-
-    def get_pass_result(self):
-        """Get default debug test passed result tuple."""
-        return (True, (f'The parameter, "{self.param}", has no debugging '
-                       'routine.'))
+def validate_png_svg_color(value: str) -> str:
+    """Valadate six-digit hexadecimal color value."""
+    assert png_svg_color_re.match(value), (f'{value} has not the form of a '
+                                           '6-digit hexadecimal color value.')
+    return value
 
 
-class ParamString(ParamNoDebug):
-    """String parameter object."""
-
-    # def __str__(self) -> str:
-    #     """String used for parameter in subprocess call.
-
-    #     This works when passing a string to subprocess.run but not when
-    #     passing a list; spaces in the value mess up the output when
-    #     addressed both here and there.
-    #     """
-    #     value = str(self.value)
-    #     return_value = f'{self.tool_arg}={value}'
-    #     if " " in value:
-    #         return_value = f'{self.tool_arg}="{value}"'
-    #     return return_value
-    pass
+Number = int | float
+NonNegativeNumber = Annotated[Number, Field(ge=0)]
+PositiveInt = Annotated[int, Field(gt=0)]
+PositiveNumber = Annotated[Number, Field(gt=0)]
+NonNegativeNumber = Annotated[Number, Field(ge=0)]
+ZeroToOne = Annotated[Number, Field(ge=0, le=1)]
 
 
-class ParamAngle(ParamNumber):
-    """Parameter for angles."""
-
-    def debug(self) -> tuple[bool, str]:
-        """Check that value can be converted to float."""
-        return self.debug_float()
-
-
-class ParamColor(ParamArgList):
-    """Parameter for color, format differing by output type."""
-
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check that value is a string or three floats list color."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". Either a string like a hex color (without'
-                   ' the "#" at the front) for SVG and PNG output or a list of'
-                   'three numbers from 0 to 1 for PostScript output is '
-                   'required.')
-        if isinstance(self.value, list):
-            objects = [ParamNumber(self.param, value) for value in self.value]
-            checks = [obj.debug_float(output_obj)[0] for obj in objects]
-            if (False in checks or len(checks) != 3
-               or False in [0 <= obj.value <= 1 for obj in objects]):
-                return_value = (False, message)
-        else:
-            if hex_color_pattern.match(self.value) is None:
-                return_value = (False, message)
-        return return_value
-
-
-class ParamCoordFont(ParamString):
-    """Parameter for coord font."""
-
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check for possible bug in PNG fonts."""
-        # TODO: Add png file exists check if exe bug is not addressed.
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". A possible bug in mkhexgrid.exe may not '
-                   'find a font by name for PNG output. One must supply a link'
-                   ' to the font file instead, like '
-                   r'"C:\Windows\Fonts\consola.ttf".')
-        if output_obj.value == OUTPUT_PNG:
-            return_value = (False, message)
-        return return_value
-
-
-class ParamCoordFormat(ParamBase):
-    """Parameter for coord format with its own syntax."""
-
-    def debug(self) -> tuple[bool, str]:
-        """Check that value can generate a coordinate."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". This did not generate a well-formed grid '
-                   'coordinate.\n    Basic numeral: "%c" or "%r"\n'
-                   '    Space-padded numeral: insert number like "%2c" or '
-                   '"%3r"\n'
-                   '    Zero-padded numneral: like "%02c" or "%03r"\n'
-                   '    Letter (AB after AA): "%C" or "%R"\n'
-                   '    Letter (BB after AA): "%tC" or "%tR"\n'
-                   'Other characters may go around those patterns. Column and '
-                   'row may be reversed with horizontal grid grain. See '
-                   f'{HELP_URL} for more information.')
-        if coord_format_pattern.match(self.value) is None:
-            return_value = (False, message)
-        return return_value
-
-
-class ParamCount(ParamBase):
-    """Parameter for positive integers."""
-
-    def debug(self) -> tuple[bool, str]:
-        """Check that value can be converted to positive int."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". A positive integer is required.')
-        try:
-            value_int = int(self.value)
-        except ValueError:
-            return_value = (False, message)
-        else:
-            if self.value != value_int or value_int <= 0:
-                return_value = (False, message)
-        return return_value
-
-
-class ParamFlag(ParamNoDebug):
-    """Boolean parameter object."""
+class MeasureModel(BaseModel):
+    """Value potentially like '5mm' broken into parts."""
+    measure: Number = Field(default=None)
+    unit: MhgPsUnit | None
 
     def __str__(self) -> str:
-        """String used for parameter in subprocess call."""
-        return self.tool_arg
-
-
-class ParamInt(ParamNumber):
-    """Parameter for integers."""
-
-    def debug(self) -> tuple[bool, str]:
-        """Check that value can be converted to int."""
-        return self.debug_int()
-
-
-class ParamLength(ParamNumber):
-    """Parameter for length, format differing by output type."""
-
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check that value can be converted to float."""
-        return self.debug_float(output_obj)
-
-
-class ParamMargin(ParamArgList, ParamNumber):
-    """Parameter for margin with either one or four values."""
-
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check that value(s) can be converted to float."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". Either a number or a list of four numbers'
-                   ' is required.')
-        if isinstance(self.value, list):
-            objects = [ParamNumber(self.param, value) for value in self.value]
-            checks = [obj.debug_float(output_obj)[0] for obj in objects]
-            if False in checks or len(checks) != 4:
-                return_value = (False, message)
-        else:
-            return_value = self.debug_float(output_obj)
-            if not return_value[0]:
-                return_value = (False, message)
+        """Combine fields."""
+        return_value = str(self.measure)
+        if self.unit is not None:
+            return_value += self.unit
         return return_value
 
 
-class ParamMisc(ParamNoDebug):
-    """Boolean parameter object."""
+def validate_ps_measure(value: Number | str) -> MeasureModel:
+    """Validate value that could have string unit at end."""
+    if isinstance(value, str):
+        found = ps_units_re.match(value)
+        assert found, (f'{value} has not the form of a number followed by '
+                       'an allowed unit.')
+        return_value = MeasureModel(**found.groupdict())  # type: ignore
+    else:
+        return_value = MeasureModel(**{MEASURE: value, UNIT: None})
+    return return_value
 
-    def __str__(self) -> str:
-        """String used for parameter in subprocess call."""
-        return self.tool_arg
+
+def validate_svg_measure(value: Number | str) -> Number | str:
+    """Validate value that could have string unit at end."""
+    if isinstance(value, str):
+        found = svg_units_re.match(value)
+        assert found, (f'{value} has not the form of a number followed by '
+                       'an allowed unit.')
+        return_value = found.groupdict()[MEASURE]
+    else:
+        return_value = value
+    return return_value
 
 
-class ParamOpacity(ParamNumber):
-    """Parameter for opacity, format differing by output type."""
+def measure_is_non_negative(model: MeasureModel) -> MeasureModel:
+    """Validate non-negative value that could have string unit at end."""
+    assert model.measure >= 0, (f'{str(model)} must have a non-negative '
+                                'number.')
+    return model
 
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check that value is the right type in the right range."""
-        return_value = self.get_pass_result()
-        message = (f'The parameter, "{self.param}", has a value of '
-                   f'"{self.value}". ')
-        check_passed = False
-        if output_obj.value == OUTPUT_PNG:
-            message += ('For png output, an integer in the range of 0 to 127 '
-                        'is required.')
-            check = self.debug_int()
-            if check[0]:
-                if 0 <= self.value <= 127:
-                    check_passed = True
-        if output_obj.value == OUTPUT_SVG:
-            message += ('For svg output, a number in the range of 0 to 1 '
-                        'is required.')
-            check = self.debug_float()
-            if check[0]:
-                if 0 <= self.value <= 1:
-                    check_passed = True
-        else:
-            message += ('For PostScript output, this parameter is ignored.')
-        if not check_passed:
-            return_value = (False, message)
+
+def measure_is_positive(model: MeasureModel) -> MeasureModel:
+    """Validate positive value that could have string unit at end."""
+    assert model.measure > 0, (f'{str(model)} must have a positive number.')
+    return model
+
+
+def serialize_measure(model: MeasureModel | list[MeasureModel]) -> str:
+    """Get str from model or list of models."""
+    return_value = str(model)
+    if is_list_or_tuple(model):
+        return_value = ",".join(str(item) for item in model)
+    return return_value
+
+
+CoordFormat = Annotated[str | None, AfterValidator(validate_coord_format)]
+
+PngCoordSize = Annotated[Number, Field(ge=1.2)]
+PngFont = Annotated[Path, AfterValidator(validate_png_font)]
+PngMargin = NonNegativeNumber | list[NonNegativeNumber]
+PngOpacity = Annotated[int, Field(ge=0, le=127)]
+PngSvgColor = Annotated[str, AfterValidator(validate_png_svg_color)]
+
+PsColor = tuple[ZeroToOne, ZeroToOne, ZeroToOne]
+PsMeasure = Annotated[MeasureModel, BeforeValidator(validate_ps_measure),
+                      PlainSerializer(serialize_measure)]
+PsNonNegativeMeasure = Annotated[MeasureModel,
+                                 BeforeValidator(validate_ps_measure),
+                                 AfterValidator(measure_is_non_negative),
+                                 PlainSerializer(serialize_measure)]
+PsPositiveMeasure = Annotated[MeasureModel,
+                              BeforeValidator(validate_ps_measure),
+                              AfterValidator(measure_is_positive),
+                              PlainSerializer(serialize_measure)]
+PsMargin = PsNonNegativeMeasure | list[PsNonNegativeMeasure]
+
+SvgMeasure = Annotated[Number, BeforeValidator(validate_svg_measure)]
+SvgNonNegativeMeasure = Annotated[SvgMeasure, Field(ge=0)]
+SvgPositiveMeasure = Annotated[SvgMeasure, Field(gt=0)]
+SvgMargin = SvgNonNegativeMeasure | list[SvgNonNegativeMeasure]
+
+
+class HexMakerCommonModel(BaseModel):
+    """Model of mkhexgrid.exe params shared by all output variants."""
+    antialias: bool = get_flag('--antialias')
+    out_file: Path = get_field('--outfile')
+    centered: bool = get_flag('--centered')
+    rows: PositiveInt = get_field('--rows')
+    columns: PositiveInt = get_field('--columns')
+    grid_grain: MhgGridGrain = get_field('--grid-grain')
+    grid_start: MhgGridStart = get_field('--grid-start')
+    coord_format: CoordFormat = get_field('--coord-format')
+    coord_bearing: Number = get_field('--coord-bearing')
+    coord_tilt: Number = get_field('--coord-tilt')
+    coord_row_start: PositiveInt = get_field('--coord-row-start')
+    coord_column_start: PositiveInt = get_field('--coord-column-start')
+    coord_row_skip: PositiveInt = get_field('--coord-row-skip')
+    coord_column_skip: PositiveInt = get_field('--coord-column-skip')
+    coord_origin: MhgCoordOrigin = get_field('--coord-origin')
+    center_style: MhgCenterStyle = get_field('--center-style')
+    matte: bool = get_flag('--matte')
+
+    def items(self):
+        """Needed to make pyright happy in get_tool_args()."""
+        return self.items()
+
+
+class PngMakerModel(HexMakerCommonModel):
+    """Model for png output of mkhexgrid.exe parameters."""
+    output: Literal[MhgOutput.PNG] = get_field('--output')
+    hex_width: PositiveNumber = get_field('--hex-width')
+    hex_height: PositiveNumber = get_field('--hex-height')
+    hex_side: PositiveNumber = get_field('--hex-side')
+    image_width: PositiveNumber = get_field('--image-width')
+    image_height: PositiveNumber = get_field('--image-height')
+    image_margin: PngMargin = get_field('--image-margin')
+    grid_color: PngSvgColor = get_field('--grid-color')
+    grid_opacity: PngOpacity = get_field('--grid-opacity')
+    grid_thickness: PositiveInt = get_field('--grid-thickness')
+    coord_color: PngSvgColor = get_field('--coord-color')
+    coord_opacity: PngOpacity = get_field('--coord-opacity')
+    coord_font: PngFont = get_field('--coord-font')
+    coord_size: PngCoordSize = get_field('--coord-size')
+    coord_distance: Number = get_field('--coord-distance')
+    center_color: PngSvgColor = get_field('--center-color')
+    center_opacity: PngOpacity = get_field('--center-opacity')
+    center_size: NonNegativeNumber = get_field('--center-size')
+    background_color: PngSvgColor = get_field('--bg-color')
+    background_opacity: PngOpacity = get_field('--bg-opacity')
+
+
+class PsMakerModel(HexMakerCommonModel):
+    """Model for PostScript output of mkhexgrid.exe parameters.
+
+    Fonts in these files are problematic; they do not use system fonts
+    simply by naming them. Any string passes validation and a file can
+    be produced, but that file may not open correctly. Addressing this
+    matter is not a high priority at this time.
+
+    Opacity values are ignored by mkhexgrid.exe in these files.
+    """
+    output: Literal[MhgOutput.PS] = get_field('--output')
+    hex_width: PsPositiveMeasure = get_field('--hex-width')
+    hex_height: PsPositiveMeasure = get_field('--hex-height')
+    hex_side: PsPositiveMeasure = get_field('--hex-side')
+    image_width: PsPositiveMeasure = get_field('--image-width')
+    image_height: PsPositiveMeasure = get_field('--image-height')
+    image_margin: PsMargin = get_field('--image-margin')
+    grid_color: PsColor = get_field('--grid-color')
+    grid_thickness: PsPositiveMeasure = get_field('--grid-thickness')
+    coord_color: PsColor = get_field('--coord-color')
+    coord_font: str = get_field('--coord-font')
+    coord_size: PsPositiveMeasure = get_field('--coord-size')
+    coord_distance: PsMeasure = get_field('--coord-distance')
+    center_color: PsColor = get_field('--center-color')
+    center_size: PsNonNegativeMeasure = get_field('--center-size')
+    background_color: PsColor = get_field('--bg-color')
+
+
+class SvgMakerModel(HexMakerCommonModel):
+    """Model for svg output of mkhexgrid.exe parameters."""
+    output: Literal[MhgOutput.SVG] = get_field('--output')
+    hex_width: SvgPositiveMeasure = get_field('--hex-width')
+    hex_height: SvgPositiveMeasure = get_field('--hex-height')
+    hex_side: SvgPositiveMeasure = get_field('--hex-side')
+    image_width: SvgPositiveMeasure = get_field('--image-width')
+    image_height: SvgPositiveMeasure = get_field('--image-height')
+    image_margin: SvgMargin = get_field('--image-margin')
+    grid_color: PngSvgColor = get_field('--grid-color')
+    grid_opacity: ZeroToOne = get_field('--grid-opacity')
+    grid_thickness: SvgMeasure = get_field('--grid-thickness')
+    coord_color: PngSvgColor = get_field('--coord-color')
+    coord_opacity: ZeroToOne = get_field('--coord-opacity')
+    coord_font: str = get_field('--coord-font')
+    coord_size: SvgPositiveMeasure = get_field('--coord-size')
+    coord_distance: SvgMeasure = get_field('--coord-distance')
+    center_color: PngSvgColor = get_field('--center-color')
+    center_opacity: ZeroToOne = get_field('--center-opacity')
+    center_size: SvgNonNegativeMeasure = get_field('--center-size')
+    background_color: PngSvgColor = get_field('--bg-color')
+    background_opacity: ZeroToOne = get_field('--bg-opacity')
+
+
+ModelUnion = PngMakerModel | PsMakerModel | SvgMakerModel
+
+
+class HexMakerModel(RootModel):
+    """Model combining the output-determined models."""
+    root: ModelUnion = Field(..., discriminator='output')
+
+    @staticmethod
+    def get_one_arg(key: str, value: Any) -> str:
+        """Get tool arg for subprocess.run from model_dump item."""
+        return_value = f'{key}={str(value)}'
+        if value is True:
+            return_value = key
+        elif is_list_or_tuple(value):
+            return_value = f'{key}={",".join(str(item) for item in value)}'
         return return_value
 
-
-class ParamSize(ParamNumber):
-    """Parameter for size, format differing by output, PNG is int."""
-
-    def debug(self, output_obj: ParamFromList) -> tuple[bool, str]:
-        """Check for valid value by output."""
-        if output_obj.value == OUTPUT_PNG:
-            return self.debug_int(output_obj)
-        else:
-            return self.debug_float(output_obj)
+    def get_tool_args(self) -> list[str]:
+        """Get list of 'key=value' strings for subprocess.run()."""
+        model = self.model_dump(by_alias=True, exclude_defaults=True)
+        return [self.get_one_arg(key, value) for key, value in model.items()]
 
 
-@dataclass
-class ParamInfo():
-    """Info for handling parameter."""
-    tool_arg: str
-    param_object: type[ParamBase]
-    param_list: Optional[list[str]] = None
-
-
-class HexMakerParams(TypedDict, total=False):
-    """Input, as from YAML, for running mkhexgrid."""
-    antialias: bool
-    outfile: str | Path
-    output: str
-    hex_width: float | str
-    hex_height: float | str
-    hex_side: float | str
-    image_width: float | str
-    image_height: float | str
-    image_margin: float | str | list[float] | list[str]
-    centered: bool
-    rows: int
-    columns: int
-    grid_color: str | list[float]
-    grid_opacity: int | float
-    grid_thickness: float | str
-    grid_grain: str
-    grid_start: str
-    coord_color: str | list[float]
-    coord_opacity: int | float
-    coord_format: str | None
-    coord_font: str
-    coord_size: float | str
-    coord_bearing: float
-    coord_distance: float | str
-    coord_tilt: float
-    coord_row_start: int
-    coord_column_start: int
-    coord_row_skip: int
-    coord_column_skip: int
-    coord_origin: str
-    center_style: str
-    center_color: str | list[float]
-    center_opacity: int | float
-    center_size: float | str
-    background_color: str | list[float]
-    background_opacity: int | float
-    matte: bool
-    help: bool
-    version: bool
-
-
-class SubprocessKwargs(TypedDict, total=False):
+class SubprocessKwargsModel(BaseModel):
     """Kwargs to use with subprocess.run in the HexGridMaker."""
-    capture_output: bool
-    check: bool
-    cwd: str
-    encoding: str
-    env: Mapping[str, str] | Mapping[bytes, bytes]
-    input: bytes | str
-    shell: bool
-    stderr: str
-    stdin: str | bytes
-    stdout: str
-    text: str
-    timeout: int
+    capture_output: bool = Field(default=None)
+    check: bool = Field(default=None)
+    cwd: str = Field(default=None)
+    encoding: str = Field(default=None)
+    env: Mapping[str, str] | Mapping[bytes, bytes] = Field(default=None)
+    input_: bytes | str = Field(default=None, alias='input')
+    shell: bool = Field(default=None)
+    stderr: str = Field(default=None)
+    stdin: str | bytes = Field(default=None)
+    stdout: str = Field(default=None)
+    text: str = Field(default=None)
+    timeout: int = Field(default=None)
 
 
 class MkHexGrid():
     """Handler for running mkhexgrid.exe."""
 
-    param_data = {'antialias': ParamInfo('--antialias', ParamFlag),
-                  'outfile': ParamInfo('--outfile', ParamString),
-                  'output': ParamInfo('--output', ParamFromList, OUTPUTS),
-                  'hex_width': ParamInfo('--hex-width', ParamLength),
-                  'hex_height': ParamInfo('--hex-height', ParamLength),
-                  'hex_side': ParamInfo('--hex-side', ParamLength),
-                  'image_width': ParamInfo('--image-width', ParamLength),
-                  'image_height': ParamInfo('--image-height', ParamLength),
-                  'image_margin': ParamInfo('--image-margin', ParamMargin),
-                  'centered': ParamInfo('--centered', ParamFlag),
-                  'rows': ParamInfo('--rows', ParamCount),
-                  'columns': ParamInfo('--columns', ParamCount),
-                  'grid_color': ParamInfo('--grid-color', ParamColor),
-                  'grid_opacity': ParamInfo('--grid-opacity', ParamOpacity),
-                  'grid_thickness': ParamInfo('--grid-thickness', ParamSize),
-                  'grid_grain': ParamInfo('--grid-grain', ParamFromList,
-                                          GRID_GRAINS),
-                  'grid_start': ParamInfo('--grid-start', ParamFromList,
-                                          GRID_STARTS),
-                  'coord_color': ParamInfo('--coord-color', ParamColor),
-                  'coord_opacity': ParamInfo('--coord-opacity', ParamOpacity),
-                  'coord_format': ParamInfo('--coord-format',
-                                            ParamCoordFormat),
-                  'coord_font': ParamInfo('--coord-font', ParamCoordFont),
-                  'coord_size': ParamInfo('--coord-size', ParamLength),
-                  'coord_bearing': ParamInfo('--coord-bearing', ParamAngle),
-                  'coord_distance': ParamInfo('--coord-distance', ParamLength),
-                  'coord_tilt': ParamInfo('--coord-tilt', ParamAngle),
-                  'coord_row_start': ParamInfo('--coord-row-start', ParamInt),
-                  'coord_column_start': ParamInfo('--coord-column-start',
-                                                  ParamInt),
-                  'coord_row_skip': ParamInfo('--coord-row-skip', ParamInt),
-                  'coord_column_skip': ParamInfo('--coord-column-skip',
-                                                 ParamInt),
-                  'coord_origin': ParamInfo('--coord-origin', ParamFromList,
-                                            COORD_ORIGINS),
-                  'center_style': ParamInfo('--center-style', ParamFromList,
-                                            CENTER_STYLES),
-                  'center_color': ParamInfo('--center-color', ParamColor),
-                  'center_opacity': ParamInfo('--center-opacity',
-                                              ParamOpacity),
-                  'center_size': ParamInfo('--center-size', ParamSize),
-                  'background_color': ParamInfo('--bg-color', ParamColor),
-                  'background_opacity': ParamInfo('--bg-opacity',
-                                                  ParamOpacity),
-                  'matte': ParamInfo('--matte', ParamFlag),
-                  'help': ParamInfo('--help', ParamMisc),
-                  'version': ParamInfo('--version', ParamMisc)}
-
-    def __init__(self, params: HexMakerParams, tool: str = TOOL,
-                 debug: bool = False) -> None:
+    def __init__(self, params: dict[str, Any], tool: str = TOOL,
+                 subprocess_kwargs: Optional[dict[str, Any]] = None
+                 ) -> None:
         """Initialize object."""
         if shutil.which(tool) is None:
             raise ProgramNotFoundError(tool, type(self).__name__)
+        self.params = HexMakerModel(**params)
         self.tool = tool
-        self.params = [self.get_param(param, value)
-                       for param, value in params.items()
-                       if value not in [None, False]]
-        self.tool_args = [self.tool, *[str(param) for param in self.params]]
+        self.subprocess_kwargs = self.get_subprocess_kwargs(subprocess_kwargs)
 
-    def __str__(self) -> str:
-        """Get string from which tool can be run."""
-        return " ".join(self.tool_args)
-
-    def debug_params(self) -> list[tuple[bool, str]]:
-        """Check params for tool-compliant values."""
-        returns = []
-        output = self.get_output_param()
-        for param in self.params:
-            try:
-                returns.append(param.debug())
-            except TypeError:
-                returns.append(param.debug(output))
-        return returns
-
-    def get_output_param(self) -> type[ParamBase]:
-        """Get output param."""
-        return_obj = None
-        for param in self.params:
-            if param.param == OUTPUT:
-                return_obj = param
-                break
-        if return_obj is None:
-            return_obj = self.get_param(OUTPUT, OUTPUT_PNG)
-        return return_obj
-
-    def get_param(self, param: str, value: Any) -> type[ParamBase]:
-        """Get filled param object for each parameter for tool."""
-        try:
-            info = self.param_data[param]
-        except KeyError:
-            raise UnknownParameterError(param, list(self.param_data.keys()))
-        try:
-            return_obj = info.param_object(param, value, info.tool_arg,
-                                           info.param_list)
-        except TypeError:
-            return_obj = info.param_object(param, value, info.tool_arg)
-        return return_obj
-
-    def run(self, subprocess_kwargs: Optional[SubprocessKwargs] = None):
-        """Make hex grid with given parameters."""
+    @staticmethod
+    def get_subprocess_kwargs(subprocess_kwargs:
+                              Optional[dict[str, Any]] = None
+                              ) -> dict[str, Any]:
         if subprocess_kwargs is None:
             subprocess_kwargs = {}
-        return subprocess.run(self.tool_args,
-                              **cast(dict[str, Any], subprocess_kwargs))
-        # return subprocess.run(str(self), **subprocess_kwargs)
+        else:
+            subprocess_kwargs = (SubprocessKwargsModel(**subprocess_kwargs)
+                                 .model_dump(by_alias=True,
+                                             exclude_defaults=True))
+        return subprocess_kwargs
+
+    def run(self) -> subprocess.CompletedProcess[str | bytes]:
+        """Make hex grid with given parameters."""
+        tool_args = [self.tool] + self.params.get_tool_args()
+        return subprocess.run(tool_args, **self.subprocess_kwargs)
+
+    def run_help(self) -> subprocess.CompletedProcess[str | bytes]:
+        """Run mkhexgrid.exe --help."""
+        return subprocess.run([self.tool, '--help'], **self.subprocess_kwargs)
+
+    def run_version(self) -> subprocess.CompletedProcess[str | bytes]:
+        """Run mkhexgrid.exe --version."""
+        return subprocess.run([self.tool, '--version'],
+                              **self.subprocess_kwargs)
+
+
+def is_list_or_tuple(variable: Any) -> bool:
+    """Check if variable is a list or tuple but not a string."""
+    return isinstance(variable, Sequence) and not isinstance(variable, str)
