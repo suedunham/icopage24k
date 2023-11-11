@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 import re
 import shutil
-from typing import Any, Literal, Mapping, Optional, Pattern
+from typing import Any, Literal, Mapping, Optional, Pattern, Self
 from typing_extensions import Annotated
 
 from pydantic import BaseModel, Field, PlainSerializer, RootModel
@@ -30,6 +30,15 @@ class BaseError(Exception):
 
     def __str__(self) -> str:
         return self.message
+
+
+class IncompatableModelError(BaseError):
+    """Wrapper initalized with model unlike HexMakerModel."""
+
+    def __init__(self, argument: str, class_name: str) -> None:
+        super().__init__(argument)
+        self.message = (f'The model, {argument}, could not be used to '
+                        f'initialize {class_name}.')
 
 
 class ProgramNotFoundError(BaseError):
@@ -381,15 +390,56 @@ class SubprocessKwargsModel(BaseModel):
 class MkHexGrid():
     """Handler for running mkhexgrid.exe."""
 
-    def __init__(self, params: dict[str, Any], tool: str = TOOL,
+    def __init__(self, tool_args: list[str], tool: str = TOOL,
                  subprocess_kwargs: Optional[dict[str, Any]] = None
                  ) -> None:
-        """Initialize object."""
+        """Initialize object with raw list of tool_args.
+
+        This list should be fully-formed CLI strings to be fed directly
+        to subprocess.run(). They should be the format
+            mkhexgrid arg=value, such as '--outfile=text.svg'
+
+        One of the class methods is likely handier, but they end up here
+        in the end.
+
+        The subprocess_kwargs dict is validated with the model here.
+        Note that the usual "input" param should be aliased "input_", if
+        used.
+        """
         if shutil.which(tool) is None:
             raise ProgramNotFoundError(tool, type(self).__name__)
-        self.params = HexMakerModel(**params)
+        self.tool_args = tool_args
         self.tool = tool
         self.subprocess_kwargs = self.get_subprocess_kwargs(subprocess_kwargs)
+
+    @classmethod
+    def from_dict(cls, tool_kwargs: dict[str, Any], tool: str = TOOL,
+                  subprocess_kwargs: Optional[dict[str, Any]] = None
+                  ) -> Self:
+        """Initialize object from a dict of tool kwargs.
+
+        This dict should have Python-named keys from the pydantic models
+        here, which are used to validate the input.
+        """
+        tool_args = HexMakerModel(**tool_kwargs).get_tool_args()
+        return cls(tool_args, tool, subprocess_kwargs)
+
+    @classmethod
+    def from_model(cls, tool_model: HexMakerModel, tool: str = TOOL,
+                   subprocess_kwargs: Optional[dict[str, Any]] = None
+                   ) -> Self:
+        """Initialize object from a pydantic model.
+
+        This is useful if another validation step is not desired. The
+        model, HexMakerModel, from above is intended, though another
+        can work if it resembles that model in its fields and methods.
+        """
+        try:
+            tool_args = tool_model.get_tool_args()
+        except AttributeError:
+            raise IncompatableModelError(type(tool_model).__name__,
+                                         cls.__name__)
+        return cls(tool_args, tool, subprocess_kwargs)
 
     @staticmethod
     def get_subprocess_kwargs(subprocess_kwargs:
@@ -405,7 +455,7 @@ class MkHexGrid():
 
     def run(self) -> subprocess.CompletedProcess[str | bytes]:
         """Make hex grid with given parameters."""
-        tool_args = [self.tool] + self.params.get_tool_args()
+        tool_args = [self.tool] + self.tool_args
         return subprocess.run(tool_args, **self.subprocess_kwargs)
 
     def run_help(self) -> subprocess.CompletedProcess[str | bytes]:
