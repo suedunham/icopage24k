@@ -4,15 +4,15 @@ import subprocess
 from pathlib import Path
 import re
 import shutil
-from typing import Any, Literal, Mapping, Optional, Pattern, Self
+from typing import Any, ClassVar, Literal, Mapping, Optional, Pattern, Self
 from typing_extensions import Annotated
 
-from pydantic import BaseModel, Field, PlainSerializer, RootModel
+from pydantic import (BaseModel, Field, field_validator, PlainSerializer,
+                      RootModel)
 from pydantic.functional_validators import AfterValidator, BeforeValidator
 
 
-COORD_FORMAT = 'cr'
-# COORD_FORMAT_ALT = 'xy'
+COORD_FORMAT_TOKENS = 'cr'
 TOOL = 'mkhexgrid'
 UNIT_PIXELS = 'px'
 
@@ -46,12 +46,24 @@ class ProgramNotFoundError(BaseError):
 
     def __init__(self, argument: str, class_name: str) -> None:
         super().__init__(argument)
-        self.message = (f'The program, "{argument}" could not be found on the '
+        self.message = (f'The program, {argument}, could not be found on the '
                         'system or user PATH.\nEither add it to one of those '
                         'environment variables or include the full path to it '
                         'when initializing the wrapper\nobject like the '
                         f'following:\n\nobj = {class_name}(settings, '
                         f'tool="C:\\path\\to\\{argument}.exe")')
+
+
+class ToolNameOrPathIsNoneError(BaseError):
+    """A value of None was supplied to a tool name or path parameter."""
+
+    def __init__(self, argument: str) -> None:
+        super().__init__(argument)
+        self.message = (f'The class, {argument}, has been given a value of '
+                        'None in place of the name or path to mkhexgrid.exe.'
+                        '\n\nTo use the wrapper default and suppress this '
+                        'message, call the tool-check routine in that class '
+                        'with use_wrapper_default_on_err = True')
 
 
 class MhgOutput(StrEnum):
@@ -101,9 +113,10 @@ class MhgCenterStyle(StrEnum):
     CROSS = 'c'
 
 
-def get_coord_format_re(dim: str) -> Pattern[str]:
-    """Get re pattern for coord_format."""
-    pattern = fr'^(?:.*%(?:t?[{dim.upper()}]|0?\d?[{dim.lower()}])){2}.*$'
+def get_coord_format_re(token_string: str) -> Pattern[str]:
+    """Get re pattern for coord_format using given dimension tokens."""
+    upper, lower = token_string.upper(), token_string.lower()
+    pattern = (fr'^(?:.*%(?:t?[{upper}]|0?\d?[{lower}])){{2}}.*$')
     return re.compile(pattern)
 
 
@@ -113,8 +126,7 @@ def get_measure_re(units: list[str]) -> Pattern[str]:
     return re.compile(pattern)
 
 
-coord_format_re = get_coord_format_re(COORD_FORMAT)
-# coord_format_alt_re = get_coord_format_re(COORD_FORMAT_ALT)
+coord_format_re = get_coord_format_re(COORD_FORMAT_TOKENS)
 png_svg_color_re = re.compile(r'(?i)^([0-9a-f]{6})$')
 ps_units_re = get_measure_re(list(MhgPsUnit))
 svg_units_re = get_measure_re([UNIT_PIXELS])
@@ -128,16 +140,6 @@ def get_field(alias: str) -> Any:
 def get_flag(alias: str) -> Any:
     """Get Field with standard flag settings."""
     return Field(default=False, serialization_alias=alias)
-
-
-def validate_coord_format(value: str | None) -> str | None:
-    """Validate the standard coord_format setting."""
-    if value is None:
-        return value
-    is_valid = coord_format_re.match(value) or value == ""
-    assert is_valid, (f'{value} is not a valid coord_format, empty string, '
-                      'or None/Null.')
-    return value
 
 
 def validate_png_font(value: Path) -> Path:
@@ -220,7 +222,18 @@ def serialize_measure(model: MeasureModel | list[MeasureModel]) -> str:
     return return_value
 
 
-CoordFormat = Annotated[str | None, AfterValidator(validate_coord_format)]
+# def validate_coord_format(value: str | None,
+#                           info: ValidationInfo) -> str | None:
+#     """Validate the standard coord_format setting."""
+#     if value is None:
+#         return value
+#     is_valid = coord_format_re.match(value) or value == ""
+#     assert is_valid, (f'{value} is not a valid coord_format, empty string, '
+#                       'or None/Null.')
+#     return value
+
+
+# CoordFormat = Annotated[str | None, AfterValidator(validate_coord_format)]
 
 PngCoordSize = Annotated[Number, Field(ge=1.2)]
 PngFont = Annotated[Path, AfterValidator(validate_png_font)]
@@ -249,6 +262,7 @@ SvgMargin = SvgNonNegativeMeasure | list[SvgNonNegativeMeasure]
 
 class HexMakerCommonModel(BaseModel):
     """Model of mkhexgrid.exe params shared by all output variants."""
+    coord_format_re: ClassVar[Pattern] = coord_format_re
     antialias: bool = get_flag('--antialias')
     out_file: Path = get_field('--outfile')
     centered: bool = get_flag('--centered')
@@ -256,7 +270,8 @@ class HexMakerCommonModel(BaseModel):
     columns: PositiveInt = get_field('--columns')
     grid_grain: MhgGridGrain = get_field('--grid-grain')
     grid_start: MhgGridStart = get_field('--grid-start')
-    coord_format: CoordFormat = get_field('--coord-format')
+    # coord_format: CoordFormat = get_field('--coord-format')
+    coord_format: str = get_field('--coord-format')
     coord_bearing: Number = get_field('--coord-bearing')
     coord_tilt: Number = get_field('--coord-tilt')
     coord_row_start: PositiveInt = get_field('--coord-row-start')
@@ -270,6 +285,17 @@ class HexMakerCommonModel(BaseModel):
     def items(self):
         """Needed to make pyright happy in get_tool_args()."""
         return self.items()
+
+    @field_validator('coord_format')
+    @classmethod
+    def validate_coord_format(cls, value: str | None) -> str | None:
+        """Validate the standard coord_format setting."""
+        if value is None:
+            return value
+        is_valid = cls.coord_format_re.match(value) or value == ""
+        assert is_valid, (f'{value} is not a valid coord_format, empty string,'
+                          ' or None/Null.')
+        return value
 
 
 class PngMakerModel(HexMakerCommonModel):
@@ -391,8 +417,8 @@ class MkHexGrid():
     """Handler for running mkhexgrid.exe."""
 
     def __init__(self, tool_args: list[str], tool: str = TOOL,
-                 subprocess_kwargs: Optional[dict[str, Any]] = None
-                 ) -> None:
+                 subprocess_kwargs: Optional[dict[str, Any]] = None,
+                 do_tool_check: bool = True) -> None:
         """Initialize object with raw list of tool_args.
 
         This list should be fully-formed CLI strings to be fed directly
@@ -406,8 +432,8 @@ class MkHexGrid():
         Note that the usual "input" param should be aliased "input_", if
         used.
         """
-        if shutil.which(tool) is None:
-            raise ProgramNotFoundError(tool, type(self).__name__)
+        if do_tool_check:
+            check_tool(tool, type(self).__name__)
         self.tool_args = tool_args
         self.tool = tool
         self.subprocess_kwargs = self.get_subprocess_kwargs(subprocess_kwargs)
@@ -466,6 +492,24 @@ class MkHexGrid():
         """Run mkhexgrid.exe --version."""
         return subprocess.run([self.tool, '--version'],
                               **self.subprocess_kwargs)
+
+
+def check_tool(tool: str | Path, checking_class_name: str,
+               use_wrapper_default_on_err: bool = False) -> str | Path:
+    """Check that the mkhexgrid tool is usable on the system."""
+    return_value = None
+    try:
+        check = shutil.which(tool)
+    except TypeError:
+        if use_wrapper_default_on_err:
+            return_value = TOOL
+        else:
+            raise ToolNameOrPathIsNoneError(checking_class_name)
+    else:
+        return_value = tool
+        if check is None:
+            raise ProgramNotFoundError(str(tool), checking_class_name)
+    return return_value
 
 
 def is_list_or_tuple(variable: Any) -> bool:
