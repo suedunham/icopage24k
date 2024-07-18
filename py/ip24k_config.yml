@@ -1,0 +1,56 @@
+grid_maker_general:
+  # Override with path to mkhexgrid.exe for faster performance in Windows.
+  tool: mkhexgrid
+
+  # Do the check that mkhexgrid is present on the system in the wrapper
+  # just before it makes a grid.
+  do_tool_check_in_wrapper: False
+
+  # Suppress error message for tool is None and use wrapper default value.
+  # This is pretty belt-and-suspenders, since the tool setting above
+  # should take care of it, but None happens.
+  # use_wrapper_default_tool_on_err: True
+
+  # Print results of mkhexgrid to the terminal.
+  show_output: True
+
+  # Namespace used by mkhexgrid.exe for svg output.
+  # This is not given to mkhexgrid.exe itself, and maybe I should just
+  # get it programmatically instead. It's needed for editor object.
+  svg_namespace: http://www.w3.org/2000/svg
+
+  # Flag to override the parsing of the coord_format setting that
+  # replaces "x" and "y" with "r" and "c" before passing it to
+  # mkhexgrid.exe. Set this to True if not using "x" and "y" or if such
+  # replacement gives undesired results.
+  coord_format_as_mkhexgrid: False
+
+  # Flag to override the reversal of coordinates for horizontal
+  # grid_grains. Set this to True to restore mkhexgrid.exe's default
+  # behavior.
+  coords_fixed_to_grain: False
+
+  # Coordinate plans and mkhexgrid settings to use for them.
+  coord_plans:
+    # Spreadsheet-style coordinates, like "A1"
+  - name: Spreadsheet
+    mkhexgrid:
+      coord_format: '%X%y'
+      coord_origin: ul
+
+    # Cartesian-style coordinates, like "1,1"
+  - name: Cartesian
+    mkhexgrid:
+      coord_format: '%x,%y'
+      coord_origin: ll
+
+    # Override mkhexgrid.exe default value with empty string.
+  - name: No coordinates
+    mkhexgrid:
+      coord_format: ""
+
+
+# Settings passed to subprocess.run() when running mkhexgrid.exe.
+subprocess_kwargs:
+  capture_output: True
+  encoding: utf-8

@@ -1,0 +1,73 @@
+fixed:
+  coord_plan: No coordinates
+  mkhexgrid:
+    background_opacity: 0
+    coord_bearing: 270
+    coord_color: '000000'
+    coord_font: Atkinson Hyperlegible
+    grid_color: '000000'
+    grid_grain: h
+    grid_thickness: 0.5
+    output: svg
+
+variable:
+- name: div2
+  div: 2
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 206
+    coord_size: 16
+- name: div4
+  div: 4
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 84
+    coord_size: 10.667
+- name: div10
+  div: 10
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 34
+    coord_size: 10.667
+- name: div16
+  div: 16
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 17
+    coord_size: 10.667
+- name: div20
+  div: 20
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 14
+    coord_size: 8
+- name: div22
+  div: 22
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 10
+    coord_size: 8
+- name: div40
+  div: 40
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 6
+    coord_size: 5.333
+- name: div41
+  div: 41
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 6
+    coord_size: 5.333
+- name: div42
+  div: 42
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 6
+    coord_size: 5.333
+- name: div44
+  div: 44
+  coord_plan: Cartesian
+  mkhexgrid:
+    coord_distance: 5
+    coord_size: 5.333

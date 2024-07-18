@@ -1,0 +1,20 @@
+hexpage:
+  border_hex:
+    center_color: '000000'
+    center_size: 2
+    center_style: c
+    grid_thickness: 1
+  divisions_across: [4, 6, 10, 16, 22, 40, 41, 42, 60, 64, 88, 100, 160]
+  page_dir: '../extras/grids/hexpage'
+  # image_across: 816
+  # image_long: 1056
+  length_across: 768
+  length_long: Null
+
+icopage:
+  page_dir: '../extras/grids/icopage'
+  divisions_across: [2, 4, 10, 20, 40, 44]
+  highlights:
+    grid_thickness: 2
+    grid_grain: v
+  length_across: 768

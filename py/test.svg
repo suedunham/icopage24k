@@ -1,0 +1,123 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="200.5" height="300" version="1.1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<path id="bottoms" d="M 0 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0 l 7.21688 -12.5 m 14.4338 0 l 7.21688 12.5 m 14.4338 0" />
+<path id="tops" d="M 0 0 l 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0" />
+<path id="outline" d="M 0 0 l 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 14.4338 0 7.21688 -12.5 14.4338 0 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 7.21688 12.5 -7.21688 12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 12.5 -14.4338 0 -7.21688 -12.5 -14.4338 0 -7.21688 -12.5 7.21688 -12.5 -7.21688 -12.5 7.21688 -12.5 -7.21688 -12.5 7.21688 -12.5 -7.21688 -12.5 7.21688 -12.5 -7.21688 -12.5 7.21688 -12.5 -7.21688 -12.5 7.21688 -12.5 z" />
+</defs>
+<g transform="translate(200.5,0.5) rotate(90)">
+<g id="grid" style="fill: none; stroke: #808080; stroke-opacity: 1; stroke-width: 1; ">
+<use x="0" y="12.5" xlink:href="#outline" />
+<use x="21.6506" y="25" xlink:href="#bottoms" />
+<use x="7.21688" y="25" xlink:href="#tops" />
+<use x="21.6506" y="50" xlink:href="#bottoms" />
+<use x="7.21688" y="50" xlink:href="#tops" />
+<use x="21.6506" y="75" xlink:href="#bottoms" />
+<use x="7.21688" y="75" xlink:href="#tops" />
+<use x="21.6506" y="100" xlink:href="#bottoms" />
+<use x="7.21688" y="100" xlink:href="#tops" />
+<use x="21.6506" y="125" xlink:href="#bottoms" />
+<use x="7.21688" y="125" xlink:href="#tops" />
+<use x="21.6506" y="150" xlink:href="#bottoms" />
+<use x="7.21688" y="150" xlink:href="#tops" />
+<use x="21.6506" y="175" xlink:href="#bottoms" />
+</g>
+<g id="coordinates" style="fill: #808080; fill-opacity: 1; font-family: Arial; font-size: 1px; text-anchor: middle; ">
+<text x="19.4336" y="12.4564" transform="rotate(-90 19.4336 12.4564)">9,13</text>
+<text x="41.0842" y="24.9564" transform="rotate(-90 41.0842 24.9564)">9,12</text>
+<text x="62.7348" y="12.4564" transform="rotate(-90 62.7348 12.4564)">9,11</text>
+<text x="84.3855" y="24.9564" transform="rotate(-90 84.3855 24.9564)">9,10</text>
+<text x="106.036" y="12.4564" transform="rotate(-90 106.036 12.4564)">9,9</text>
+<text x="127.687" y="24.9564" transform="rotate(-90 127.687 24.9564)">9,8</text>
+<text x="149.337" y="12.4564" transform="rotate(-90 149.337 12.4564)">9,7</text>
+<text x="170.988" y="24.9564" transform="rotate(-90 170.988 24.9564)">9,6</text>
+<text x="192.639" y="12.4564" transform="rotate(-90 192.639 12.4564)">9,5</text>
+<text x="214.289" y="24.9564" transform="rotate(-90 214.289 24.9564)">9,4</text>
+<text x="235.94" y="12.4564" transform="rotate(-90 235.94 12.4564)">9,3</text>
+<text x="257.591" y="24.9564" transform="rotate(-90 257.591 24.9564)">9,2</text>
+<text x="279.241" y="12.4564" transform="rotate(-90 279.241 12.4564)">9,1</text>
+<text x="19.4336" y="37.4564" transform="rotate(-90 19.4336 37.4564)">8,13</text>
+<text x="41.0842" y="49.9564" transform="rotate(-90 41.0842 49.9564)">8,12</text>
+<text x="62.7348" y="37.4564" transform="rotate(-90 62.7348 37.4564)">8,11</text>
+<text x="84.3855" y="49.9564" transform="rotate(-90 84.3855 49.9564)">8,10</text>
+<text x="106.036" y="37.4564" transform="rotate(-90 106.036 37.4564)">8,9</text>
+<text x="127.687" y="49.9564" transform="rotate(-90 127.687 49.9564)">8,8</text>
+<text x="149.337" y="37.4564" transform="rotate(-90 149.337 37.4564)">8,7</text>
+<text x="170.988" y="49.9564" transform="rotate(-90 170.988 49.9564)">8,6</text>
+<text x="192.639" y="37.4564" transform="rotate(-90 192.639 37.4564)">8,5</text>
+<text x="214.289" y="49.9564" transform="rotate(-90 214.289 49.9564)">8,4</text>
+<text x="235.94" y="37.4564" transform="rotate(-90 235.94 37.4564)">8,3</text>
+<text x="257.591" y="49.9564" transform="rotate(-90 257.591 49.9564)">8,2</text>
+<text x="279.241" y="37.4564" transform="rotate(-90 279.241 37.4564)">8,1</text>
+<text x="19.4336" y="62.4564" transform="rotate(-90 19.4336 62.4564)">7,13</text>
+<text x="41.0842" y="74.9564" transform="rotate(-90 41.0842 74.9564)">7,12</text>
+<text x="62.7348" y="62.4564" transform="rotate(-90 62.7348 62.4564)">7,11</text>
+<text x="84.3855" y="74.9564" transform="rotate(-90 84.3855 74.9564)">7,10</text>
+<text x="106.036" y="62.4564" transform="rotate(-90 106.036 62.4564)">7,9</text>
+<text x="127.687" y="74.9564" transform="rotate(-90 127.687 74.9564)">7,8</text>
+<text x="149.337" y="62.4564" transform="rotate(-90 149.337 62.4564)">7,7</text>
+<text x="170.988" y="74.9564" transform="rotate(-90 170.988 74.9564)">7,6</text>
+<text x="192.639" y="62.4564" transform="rotate(-90 192.639 62.4564)">7,5</text>
+<text x="214.289" y="74.9564" transform="rotate(-90 214.289 74.9564)">7,4</text>
+<text x="235.94" y="62.4564" transform="rotate(-90 235.94 62.4564)">7,3</text>
+<text x="257.591" y="74.9564" transform="rotate(-90 257.591 74.9564)">7,2</text>
+<text x="279.241" y="62.4564" transform="rotate(-90 279.241 62.4564)">7,1</text>
+<text x="19.4336" y="87.4564" transform="rotate(-90 19.4336 87.4564)">6,13</text>
+<text x="41.0842" y="99.9564" transform="rotate(-90 41.0842 99.9564)">6,12</text>
+<text x="62.7348" y="87.4564" transform="rotate(-90 62.7348 87.4564)">6,11</text>
+<text x="84.3855" y="99.9564" transform="rotate(-90 84.3855 99.9564)">6,10</text>
+<text x="106.036" y="87.4564" transform="rotate(-90 106.036 87.4564)">6,9</text>
+<text x="127.687" y="99.9564" transform="rotate(-90 127.687 99.9564)">6,8</text>
+<text x="149.337" y="87.4564" transform="rotate(-90 149.337 87.4564)">6,7</text>
+<text x="170.988" y="99.9564" transform="rotate(-90 170.988 99.9564)">6,6</text>
+<text x="192.639" y="87.4564" transform="rotate(-90 192.639 87.4564)">6,5</text>
+<text x="214.289" y="99.9564" transform="rotate(-90 214.289 99.9564)">6,4</text>
+<text x="235.94" y="87.4564" transform="rotate(-90 235.94 87.4564)">6,3</text>
+<text x="257.591" y="99.9564" transform="rotate(-90 257.591 99.9564)">6,2</text>
+<text x="279.241" y="87.4564" transform="rotate(-90 279.241 87.4564)">6,1</text>
+<text x="19.4336" y="112.456" transform="rotate(-90 19.4336 112.456)">5,13</text>
+<text x="41.0842" y="124.956" transform="rotate(-90 41.0842 124.956)">5,12</text>
+<text x="62.7348" y="112.456" transform="rotate(-90 62.7348 112.456)">5,11</text>
+<text x="84.3855" y="124.956" transform="rotate(-90 84.3855 124.956)">5,10</text>
+<text x="106.036" y="112.456" transform="rotate(-90 106.036 112.456)">5,9</text>
+<text x="127.687" y="124.956" transform="rotate(-90 127.687 124.956)">5,8</text>
+<text x="149.337" y="112.456" transform="rotate(-90 149.337 112.456)">5,7</text>
+<text x="170.988" y="124.956" transform="rotate(-90 170.988 124.956)">5,6</text>
+<text x="192.639" y="112.456" transform="rotate(-90 192.639 112.456)">5,5</text>
+<text x="214.289" y="124.956" transform="rotate(-90 214.289 124.956)">5,4</text>
+<text x="235.94" y="112.456" transform="rotate(-90 235.94 112.456)">5,3</text>
+<text x="257.591" y="124.956" transform="rotate(-90 257.591 124.956)">5,2</text>
+<text x="279.241" y="112.456" transform="rotate(-90 279.241 112.456)">5,1</text>
+<text x="19.4336" y="137.456" transform="rotate(-90 19.4336 137.456)">4,13</text>
+<text x="41.0842" y="149.956" transform="rotate(-90 41.0842 149.956)">4,12</text>
+<text x="62.7348" y="137.456" transform="rotate(-90 62.7348 137.456)">4,11</text>
+<text x="84.3855" y="149.956" transform="rotate(-90 84.3855 149.956)">4,10</text>
+<text x="106.036" y="137.456" transform="rotate(-90 106.036 137.456)">4,9</text>
+<text x="127.687" y="149.956" transform="rotate(-90 127.687 149.956)">4,8</text>
+<text x="149.337" y="137.456" transform="rotate(-90 149.337 137.456)">4,7</text>
+<text x="170.988" y="149.956" transform="rotate(-90 170.988 149.956)">4,6</text>
+<text x="192.639" y="137.456" transform="rotate(-90 192.639 137.456)">4,5</text>
+<text x="214.289" y="149.956" transform="rotate(-90 214.289 149.956)">4,4</text>
+<text x="235.94" y="137.456" transform="rotate(-90 235.94 137.456)">4,3</text>
+<text x="257.591" y="149.956" transform="rotate(-90 257.591 149.956)">4,2</text>
+<text x="279.241" y="137.456" transform="rotate(-90 279.241 137.456)">4,1</text>
+<text x="19.4336" y="162.456" transform="rotate(-90 19.4336 162.456)">3,13</text>
+<text x="41.0842" y="174.956" transform="rotate(-90 41.0842 174.956)">3,12</text>
+<text x="62.7348" y="162.456" transform="rotate(-90 62.7348 162.456)">3,11</text>
+<text x="84.3855" y="174.956" transform="rotate(-90 84.3855 174.956)">3,10</text>
+<text x="106.036" y="162.456" transform="rotate(-90 106.036 162.456)">3,9</text>
+<text x="127.687" y="174.956" transform="rotate(-90 127.687 174.956)">3,8</text>
+<text x="149.337" y="162.456" transform="rotate(-90 149.337 162.456)">3,7</text>
+<text x="170.988" y="174.956" transform="rotate(-90 170.988 174.956)">3,6</text>
+<text x="192.639" y="162.456" transform="rotate(-90 192.639 162.456)">3,5</text>
+<text x="214.289" y="174.956" transform="rotate(-90 214.289 174.956)">3,4</text>
+<text x="235.94" y="162.456" transform="rotate(-90 235.94 162.456)">3,3</text>
+<text x="257.591" y="174.956" transform="rotate(-90 257.591 174.956)">3,2</text>
+<text x="279.241" y="162.456" transform="rotate(-90 279.241 162.456)">3,1</text>
+</g>
+</g>
+</svg>

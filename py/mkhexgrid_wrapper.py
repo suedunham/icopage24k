@@ -377,9 +377,8 @@ class SvgMakerModel(HexMakerCommonModel):
 ModelUnion = PngMakerModel | PsMakerModel | SvgMakerModel
 
 
-class HexMakerModel(RootModel):
-    """Model combining the output-determined models."""
-    root: ModelUnion = Field(..., discriminator='output')
+class HexMakerMethods(BaseModel):
+    """Methods used by top-level HexMakerModel-type classes."""
 
     @staticmethod
     def get_one_arg(key: str, value: Any) -> str:
@@ -395,6 +394,11 @@ class HexMakerModel(RootModel):
         """Get list of 'key=value' strings for subprocess.run()."""
         model = self.model_dump(by_alias=True, exclude_defaults=True)
         return [self.get_one_arg(key, value) for key, value in model.items()]
+
+
+class HexMakerModel(RootModel, HexMakerMethods):
+    """Model combining the output-determined models."""
+    root: ModelUnion = Field(..., discriminator='output')
 
 
 class SubprocessKwargsModel(BaseModel):
