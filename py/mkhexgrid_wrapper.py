@@ -33,7 +33,7 @@ class BaseError(Exception):
 
 
 class IncompatableModelError(BaseError):
-    """Wrapper initalized with model unlike HexMakerModel."""
+    """Wrapper initialized with model unlike HexMakerModel."""
 
     def __init__(self, argument: str, class_name: str) -> None:
         super().__init__(argument)
@@ -150,7 +150,7 @@ def validate_png_font(value: Path) -> Path:
 
 
 def validate_png_svg_color(value: str) -> str:
-    """Valadate six-digit hexadecimal color value."""
+    """Validate six-digit hexadecimal color value."""
     assert png_svg_color_re.match(value), (f'{value} has not the form of a '
                                            '6-digit hexadecimal color value.')
     return value

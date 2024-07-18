@@ -2,8 +2,6 @@ from collections.abc import Sequence
 from pathlib import Path
 from typing import Any
 
-from pydantic import BaseModel
-
 import mkhexgrid_wrapper as mw
 
 
