@@ -5,11 +5,11 @@ from pathlib import Path
 import re
 import shutil
 from typing import Any, ClassVar, Literal, Mapping, Optional, Pattern, Self
-from typing_extensions import Annotated
 
 from pydantic import (BaseModel, Field, field_validator, PlainSerializer,
                       RootModel)
 from pydantic.functional_validators import AfterValidator, BeforeValidator
+from typing_extensions import Annotated
 
 
 COORD_FORMAT_TOKENS = 'cr'
@@ -160,7 +160,7 @@ Number = int | float
 NonNegativeNumber = Annotated[Number, Field(ge=0)]
 PositiveInt = Annotated[int, Field(gt=0)]
 PositiveNumber = Annotated[Number, Field(gt=0)]
-NonNegativeNumber = Annotated[Number, Field(ge=0)]
+# NonNegativeNumber = Annotated[Number, Field(ge=0)]
 ZeroToOne = Annotated[Number, Field(ge=0, le=1)]
 
 
