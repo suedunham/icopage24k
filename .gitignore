@@ -1,5 +1,5 @@
 __pycache__
 .venv
-python.version
+.python-version
 uv.lock
 *.sublime*
