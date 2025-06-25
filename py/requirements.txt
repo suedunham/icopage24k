@@ -1,5 +1,0 @@
-lxml
-numpy
-pydantic
-ruamel.yaml
-typing_extensions
